@@ -1,0 +1,590 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Xie yue">
+  <meta name="keywords" content="">
+  
+  <title>cpp_primer_10_40 - 大树洞！</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="大树洞！" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>山丘与树洞</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="cpp_primer_10_40">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-06-02 09:32" pubdate>
+        2021年6月2日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      80
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">cpp_primer_10_40</h1>
+            
+            <div class="markdown-body">
+              <h4 id="重载与作用域"><a href="#重载与作用域" class="headerlink" title="重载与作用域"></a>重载与作用域</h4><ol>
+<li><p>一般来说，将函数声明置于局部作用域内不是一个明智的选择。但是为了说明作用域和重载之间的关系，将暂时违反这一原则而使用局部函数说明。</p>
+</li>
+<li><p>重载对作用域的一般性质没有什么改变：如果我们在内层作用域中声明名字，它将隐藏作用域外边声明的同名实体。在不同的作用域中无法重载函数名：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">string <span class="hljs-title">read</span><span class="hljs-params">()</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">const</span> string &amp;)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">double</span>)</span></span>; <span class="hljs-comment">//重载print函数</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">fooBar</span><span class="hljs-params">(<span class="hljs-keyword">int</span> ival)</span></span>&#123;<br>    <span class="hljs-keyword">bool</span> read = <span class="hljs-literal">false</span>; <span class="hljs-comment">//新作用域，隐藏了外层的read</span><br>    string s = <span class="hljs-built_in">read</span>(); <span class="hljs-comment">//错误：read是一个布尔值，而非函数</span><br>    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>; <span class="hljs-comment">//新作用域，隐藏了之前的print</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;value&quot;</span>);<span class="hljs-comment">//错误：print(const string &amp;)被隐藏掉了</span><br>    <span class="hljs-built_in">print</span>(ival); <span class="hljs-comment">//正确，当前print(int)可见</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-number">3.14</span>); <span class="hljs-comment">//正确，调用print(int)，print(double)被隐藏掉了</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>在cpp语言中，名字查找发生在类型检查之前，当调用print函数时，编译器首先寻找对该函数名的声明，找的的是接受int值的那个局部声明。一旦在当前作用域中找到了所需的名字。编译器就会忽略掉外层作用域中的同名实体，剩下的工作就是检查函数调用是否有效了。</p>
+</li>
+</ol>
+<h4 id="默认实参"><a href="#默认实参" class="headerlink" title="默认实参"></a>默认实参</h4><ol>
+<li><p>某些函数有这样一种形参，在函数的很多次调用中它们都被赋予同一个值，此时我们把这个反复出现的值称为函数的默认实参。调用含有默认实参的函数时，可以包含该实参，也可以省略该实参。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//使用string对象表示窗口的内容</span><br><span class="hljs-comment">//一般情况下，我们希望该窗口的高、宽和背景字符都使用默认值</span><br><span class="hljs-comment">//同时我们也应该允许用户为这几个参数自由指定与默认值不同的数值</span><br><span class="hljs-comment">//为了使窗口既能接纳默认值，也能接受用户指定的值，我们把它定义成如下形式：</span><br><span class="hljs-keyword">typedef</span> string::size_type sz; <br><span class="hljs-function">string <span class="hljs-title">screen</span><span class="hljs-params">(sz ht = <span class="hljs-number">24</span>, sz wid = <span class="hljs-number">80</span>, <span class="hljs-keyword">char</span> backgrnd = <span class="hljs-string">&#x27; &#x27;</span>)</span></span>;<br></code></pre></td></tr></table></figure></li>
+<li><p>可以为一个或者多个形参定义默认值，不过需要注意的是，一旦某个形参被赋予了默认值，它后面的所有形参都必须有默认值。</p>
+</li>
+<li><p>使用默认实参调用函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string window;<br>window = <span class="hljs-built_in">screen</span>(); <span class="hljs-comment">//等价于screen(24, 80, &#x27; &#x27;);</span><br>window = <span class="hljs-built_in">screen</span>(<span class="hljs-number">66</span>); <span class="hljs-comment">//screen(66, 80, &#x27; &#x27;);</span><br>window = <span class="hljs-built_in">screen</span>(<span class="hljs-number">66</span>, <span class="hljs-number">256</span>); <span class="hljs-comment">//screen(66, 256, &#x27; &#x27;);</span><br>window = <span class="hljs-built_in">screen</span>(<span class="hljs-number">66</span>, <span class="hljs-number">256</span>, <span class="hljs-string">&#x27;#&#x27;</span>); <span class="hljs-comment">//screen(66, 256, &#x27;#&#x27;);</span><br></code></pre></td></tr></table></figure></li>
+<li><p>函数调用时，实参按照其位置解析，默认实参负责填补函数调用缺少的尾部实参（靠右侧位置）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//例如要想覆盖backgrnd的默认值，必须为ht和wid提供实参</span><br>window = <span class="hljs-built_in">screen</span>(, , <span class="hljs-string">&#x27;?&#x27;</span>); <span class="hljs-comment">//错误，只能省略尾部的实参</span><br>window = <span class="hljs-built_in">screen</span>(<span class="hljs-string">&#x27;?&#x27;</span>); <span class="hljs-comment">//相当于调用screen(&#x27;?&#x27;, 80, &#x27; &#x27;);</span><br><span class="hljs-comment">//需要注意，第二个调用传递一个字符值，是合法的调用</span><br><span class="hljs-comment">//该调用之所以合法是因为&#x27;?&#x27;的类型char</span><br><span class="hljs-comment">//而函数最左侧形参的类型是string::size_type，是一种无符号整数类型</span><br><span class="hljs-comment">//所以char类型可以转换成函数最左侧形参的类型</span><br><span class="hljs-comment">//&#x27;?&#x27;对应的十六进制数是0x3F，也就是十进制数的63</span><br><span class="hljs-comment">//所以最终调用相当于screen(63, 80, &#x27; &#x27;);</span><br></code></pre></td></tr></table></figure></li>
+<li><p>当设计含有默认实参的函数时，其中一项任务是合理的设置形参的顺序，尽量让不怎么使用默认值的形参出现在前面，而让那些经常使用默认值的形参出现在后面。</p>
+</li>
+<li><p>默认实参声明：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//通常习惯将函数的声明放在头文件中，并且一个函数只声明一次</span><br><span class="hljs-comment">//但是多次声明一个函数也是合法的，不过有一点需要注意</span><br><span class="hljs-comment">//在给定的作用域中一个形参只能被赋予一次默认实参</span><br><span class="hljs-comment">//换句话说，函数的后续声明只能为之前那些没有默认值的形参添加默认实参</span><br><span class="hljs-comment">//而且该形参右侧的所有形参必须有默认值</span><br><span class="hljs-function">string <span class="hljs-title">screen</span><span class="hljs-params">(sz, sz, <span class="hljs-keyword">char</span> = <span class="hljs-string">&#x27;&#x27;); //表示高度和宽度的形参没有默认值</span></span></span><br><span class="hljs-string"><span class="hljs-params"><span class="hljs-function">string screen(sz, sz, char = &#x27;</span>*<span class="hljs-string">&#x27;); //错误，重复声明，不能修改一个已经存在的默认值</span></span></span><br><span class="hljs-string"><span class="hljs-params"><span class="hljs-function">string screen(sz = 24, sz = 80, char); //正确，添加默认实参</span></span></span><br></code></pre></td></tr></table></figure></li>
+<li><p>通常应该在函数声明中指定默认实参，并将该声明放在合适的头文件中。</p>
+</li>
+<li><p>默认实参初始值：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//局部变量不能做默认实参</span><br><span class="hljs-comment">//除此之外，只要表达式的类型能转换成形参所需的类型，该表达式就能作为默认实参</span><br><span class="hljs-comment">//wd,def和ht的声明必须出现在函数之外</span><br>sz wd = <span class="hljs-number">80</span>;<br><span class="hljs-keyword">char</span> def = <span class="hljs-string">&#x27; &#x27;</span>;<br>sz = <span class="hljs-built_in">ht</span>();<br><span class="hljs-function">string <span class="hljs-title">screen</span><span class="hljs-params">(sz = ht(), sz = wd, <span class="hljs-keyword">char</span> = def)</span></span>;<br><span class="hljs-comment">//用作默认实参的名字在函数声明的作用域内解析，而这些名字的求值过程发生在函数调用时：</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f2</span><span class="hljs-params">()</span></span>&#123;<br>    def = <span class="hljs-string">&#x27;*&#x27;</span>; <span class="hljs-comment">//改变了默认实参的值</span><br>    sz wd = <span class="hljs-number">100</span>; <span class="hljs-comment">//隐藏了外层定义的wd，但是没有改变默认值</span><br>    string window = <span class="hljs-built_in">screen</span>(); <span class="hljs-comment">//调用screen(ht(), 80, &#x27;*&#x27;);</span><br>&#125;<br><span class="hljs-comment">//在函数f2内部改变了def的值，所以对screen的调用将会传递这个更新过的值</span><br><span class="hljs-comment">//另一方面，函数还声明了一个局部变量用于隐藏外层的wd</span><br><span class="hljs-comment">//但是该局部变量与传递给screen的默认实参没有任何关系</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.40 下面哪个声明是错误的？为什么？</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown">(a)int ff(int a, int b = 0, int c = 0);<br>(b)char <span class="hljs-emphasis">* init(int ht = 24, int wd, char bckgrnd);</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//在上面的两个声明中，(a)是正确的而(b)是错误的</span><br><span class="hljs-comment">//它们都用到了默认实参，但是cpp规定一旦某个形参被赋予了默认实参</span><br><span class="hljs-comment">//则它后面的所有形参都必须有默认实参，这一规定是为了防范可能出现的二义性</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.41 下面哪个调用是非法的？为什么？哪个调用虽然合法但是与程序员的初衷不符？为什么？</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">char <span class="hljs-emphasis">* init(int ht, int wd = 80, char bckgrnd = &#x27;&#x27;);</span><br><span class="hljs-emphasis">(a)init();</span><br><span class="hljs-emphasis">(b)init(24, 10);</span><br><span class="hljs-emphasis">(c)init(14, &#x27;*</span>&#x27;);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//要想使用默认实参，只需要在调用函数时忽略该实参就可以了</span><br><span class="hljs-comment">//实参按照其位置解析，默认实参负责填补函数调用缺少的尾部实参</span><br><span class="hljs-comment">//(a)是非法的，该函数有两个默认实参，但是总计有三个形参，其中第一个形参并未设定默认实参</span><br><span class="hljs-comment">//所以想要调用该函数，至少需要提供一个实参</span><br><span class="hljs-comment">//(b)是合法的，本次调用提供了两个实参</span><br><span class="hljs-comment">//第一个实参对应第一个形参ht，第二个实参对应第二个形参wd，wd的默认实参没有用到</span><br><span class="hljs-comment">//第三个形参bckgrnd使用它的默认实参</span><br><span class="hljs-comment">//(c)在语法上是合法的，但是与程序的原意不符</span><br><span class="hljs-comment">//第二个实参的类型为char，但是它可以自动转换为第二个形参wd所需的int类型，所以编译时可以通过</span><br><span class="hljs-comment">//但是这显然违背了程序的原意，正常情况下，字符*应该被用来构建背景</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.42 给make_plural函数的第二个形参赋予默认实参’s’，利用新版本的函数输出单词success和failure的单数和负数形式。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//对于英文单词来说，大多数名词的复数是在单词末尾加上&#x27;s&#x27;</span><br><span class="hljs-comment">//也有一部分名词在单数转变为复数时需要在末尾加上&#x27;es&#x27;</span><br><span class="hljs-comment">//可以把&#x27;s&#x27;作为默认实参，大多数情况下无需考虑这个参数</span><br><span class="hljs-comment">//只有遇到末尾是&#x27;es&#x27;的单词时才专门处理</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;string&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">//最后一个形参赋予了默认实参</span><br><span class="hljs-function">string <span class="hljs-title">make_plural</span><span class="hljs-params">(<span class="hljs-keyword">size_t</span> ctr, <span class="hljs-keyword">const</span> string &amp;word, <span class="hljs-keyword">const</span> string &amp;ending = <span class="hljs-string">&quot;s&quot;</span>)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (ctr &gt; <span class="hljs-number">1</span>) ? word + ending : word;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-comment">//一般情况下，调用该函数只需要两个实参</span><br>    cout &lt;&lt; <span class="hljs-string">&quot;success的单数形式是：&quot;</span> &lt;&lt; <span class="hljs-built_in">make_plural</span>(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;success&quot;</span>) &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;success的复数形式是：&quot;</span> &lt;&lt; <span class="hljs-built_in">make_plural</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;success&quot;</span>, <span class="hljs-string">&quot;es&quot;</span>) &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;failure的单数形式是：&quot;</span> &lt;&lt; <span class="hljs-built_in">make_plural</span>(<span class="hljs-number">1</span>, <span class="hljs-string">&quot;failure&quot;</span>) &lt;&lt; endl;<br>    cout &lt;&lt; <span class="hljs-string">&quot;failure的单数形式是：&quot;</span> &lt;&lt; <span class="hljs-built_in">make_plural</span>(<span class="hljs-number">2</span>, <span class="hljs-string">&quot;failure&quot;</span>) &lt;&lt; endl;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="内联函数和constexpr函数"><a href="#内联函数和constexpr函数" class="headerlink" title="内联函数和constexpr函数"></a>内联函数和constexpr函数</h4><ol>
+<li><p>调用函数一般比求等价表达式的值慢一些。在大多数机器上，一次函数调用其实包含一系列的工作：调用前要先保存寄存器，并在返回时恢复；可能要拷贝实参；程序转向一个新的位置继续执行。</p>
+</li>
+<li><p>内联函数可以避免函数调用的开销，将函数指定为内联函数，通常是将它在每个调用点上“内联地”展开。假设我们把shorterString函数定义成内联函数，则如下调用：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp">cout &lt;&lt; <span class="hljs-built_in">shorterString</span>(s1, s2) &lt;&lt; endl;<br><span class="hljs-comment">//在编译过程中展开成类似如下的形式</span><br>cout &lt;&lt; (s1.<span class="hljs-built_in">size</span>() &lt; s2.<span class="hljs-built_in">size</span>() ? s1 : s2) &lt;&lt; endl; <span class="hljs-comment">//从而消除shorterString函数的运行时开销</span><br></code></pre></td></tr></table></figure></li>
+<li><p>内联函数的声明方式：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">const</span> string&amp; <span class="hljs-title">shorterString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> string &amp;s1, <span class="hljs-keyword">const</span> string &amp;s2)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> s1.<span class="hljs-built_in">size</span>() &lt; s2.<span class="hljs-built_in">size</span>() ? s1 : s2;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>内联说明只是向编译器发出的一个请求，编译器可以选择忽略这个请求。一般来说，内联机制适用于优化规模比较小、流程直接、频繁调用的函数。很多编译器都不支持内联递归函数。</p>
+</li>
+<li><p>constexpr函数：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> constexpr函数是指能用在常量表达式中的函数。<br><span class="hljs-bullet">2.</span> 定义constexpr函数的方式与其他函数类似，不过要遵循几项规定：<br><span class="hljs-code">	（1）函数的返回类型以及所有形参的类型都得是字面值类型。</span><br><span class="hljs-code">	（2）函数体中必须有且只有一条return语句。</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">int</span> <span class="hljs-title">new_sz</span><span class="hljs-params">()</span> </span>&#123;<span class="hljs-keyword">return</span> <span class="hljs-number">42</span>;&#125;<br><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">int</span> foo = <span class="hljs-built_in">new_sz</span>(); <span class="hljs-comment">//正确：foo是一个常量表达式</span><br><span class="hljs-comment">//把new_sz定义成无参数的constexpr函数</span><br><span class="hljs-comment">//因为编译器能在程序编译时验证new_sz函数返回的是常量表达式</span><br><span class="hljs-comment">//所以可以用new_sz函数初始化constexpr类型的变量foo</span><br><span class="hljs-comment">//执行该初始化任务时，编译器把对constexpr函数的调用替换成了其结果值</span><br><span class="hljs-comment">//为了能在编译过程中随时展开，constexpr函数被隐式地指定为了内联函数</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//允许constexpr函数的返回值并非一个常量</span><br><span class="hljs-comment">//如果arg是一个常量表达式，则scale(arg)也是常量表达式</span><br><span class="hljs-function"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">size_t</span> <span class="hljs-title">scale</span><span class="hljs-params">(<span class="hljs-keyword">size_t</span> cnt)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> cnt * <span class="hljs-built_in">new_sz</span>();<br>&#125;<br><span class="hljs-keyword">int</span> arr[<span class="hljs-built_in">scale</span>(<span class="hljs-number">2</span>)]; <span class="hljs-comment">//正确，scale(2)是常量表达式</span><br><span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>;<br><span class="hljs-keyword">int</span> arr[<span class="hljs-built_in">scale</span>(i)]; <span class="hljs-comment">//错误，scale(i)不是常量表达式</span><br><span class="hljs-comment">//如果我们用一个非常量表达式调用scale函数，比如int类型的对象i</span><br><span class="hljs-comment">//则返回值是一个非常量表达式</span><br><span class="hljs-comment">//当把scale函数用在需要常量表达式上下文中时</span><br><span class="hljs-comment">//由编译器负责检查函数的结果是否符合要求</span><br><span class="hljs-comment">//如果结果恰好不是常量表达式，编译器将发出错误信息</span><br></code></pre></td></tr></table></figure></li>
+<li><p>constexpr函数不一定返回常量表达式。</p>
+</li>
+<li><p>和其他函数不一样，内联函数和constexpr函数可以在程序中多次定义。毕竟，编译器想要展开函数仅有函数声明是不够的，还需要函数的定义。不过，对于某个给定的内联函数或者constexpr函数来说，它的多个定义必须完全一致。基于这个原因，内联函数和constexpr函数通常定义在头文件中。</p>
+</li>
+<li><p>练习 6.43 你会把下面的哪个声明和定义放在头文件中？哪个放在源文件中？为什么？</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown">(a)inline bool eq(const BigInt&amp;, const BigInt&amp;)&#123;...&#125;;<br>(b)void putValues(int <span class="hljs-emphasis">*arr, int size);</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//(a)应该放在头文件中，因为内联函数的定义对编译器而言必须是可见的</span><br><span class="hljs-comment">//以便编译器能够在调用点内联展开该函数的代码，所以仅有函数的原型不够</span><br><span class="hljs-comment">//并且，与一般的函数不同，内联函数有可能在程序中定义不止一次，此时必须保证在所有的源文件中定义完全相同</span><br><span class="hljs-comment">//把内联函数的定义放在头文件中可以确保这一点</span><br><span class="hljs-comment">//(b)是函数声明，应该放在头文件中</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.44 将6.2.2节中的isShorter函数改写成内联函数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">isShorter</span><span class="hljs-params">(<span class="hljs-keyword">const</span> string &amp;s1, <span class="hljs-keyword">const</span> string &amp;s2)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> s1.<span class="hljs-built_in">size</span>() &lt; s2.<span class="hljs-built_in">size</span>();<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.45 回顾在前面的练习中编写的那些函数，它们应该是内联函数吗？如果是，将他们改写成内联函数，如果不是，说明原因。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//如果函数的规模很大不利于展开</span><br><span class="hljs-comment">//或者函数只被调用了一两次，那么这样的函数没必要也不应该是内联函数</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.46 能把isShorter函数定义成constexpr函数吗？如果能，请改写；如果不能，说明原因。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> constexpr函数是指能用于常量表达式的函数，constexpr函数的返回类型和所有形参的类型都得是字面值类型，而且函数体中有且只有一条return语句。<br><span class="hljs-bullet">2.</span> 显然isShorter函数不符合constexpr的要求，它虽然只有一条return语句，但是返回的结果调用了标准库string类的size()函数和&lt;比较符，无法构成常量表达式，因此不能改写成constexpr类型的函数。<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="调试帮助"><a href="#调试帮助" class="headerlink" title="调试帮助"></a>调试帮助</h4><ol>
+<li><p>cpp程序员有时候会用到一种类似于头文件保护的技术，以便有选择地执行调试代码。基本思想是，程序可以包含一些用于调试的代码，但是这些代码只在开发程序的时候使用。当应用程序编写完成准备发布时，要先屏蔽调试代码。这种方法用到两种预处理功能：assert和NDEBUG。</p>
+</li>
+<li><p>assert预处理宏：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//assert是一种预处理宏</span><br><span class="hljs-comment">//所谓预处理宏是一种预处理变量，它的行为有点类似于内联函数</span><br><span class="hljs-comment">//assert宏使用一个表达式作为它的条件：</span><br><span class="hljs-built_in">assert</span>(expr);<br><span class="hljs-comment">//首先对表达式求值，如果表达式为假（即0），assert输出信息并终止程序的执行</span><br><span class="hljs-comment">//如果表达式为真（即非0），assert什么也不做</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//assert宏定义在cassert头文件中</span><br><span class="hljs-comment">//预处理名字由预处理器而非编译器管理</span><br><span class="hljs-comment">//因此我们可以直接使用预处理名字而无须提供using声明</span><br><span class="hljs-comment">//也就是说，我们应该使用assert而不是std::assert</span><br><span class="hljs-comment">//也不需要为assert提供using声明</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//和预处理变量一样，宏名字在程序内必须唯一</span><br><span class="hljs-comment">//含有cassert头文件的程序不能再定义名为assert的变量、函数或者其它实体</span><br></code></pre></td></tr></table></figure></li>
+<li><p>assert宏常用于检查“不能发生”的条件。例如，一个对输入文本进行操作的程序可能要求所有给定单词的长度都大于某个阈值。此时，程序可以包含一条如下所示的语句。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">assert</span>(word.<span class="hljs-built_in">size</span>() &gt; threshold);<br></code></pre></td></tr></table></figure></li>
+<li><p>NDEBUG预处理变量：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> assert的行为依赖于一个名为NDEBUG的预处理变量的状态。如果定义了NDEBUG，则assert什么也不做。默认状态下没有定义NDEBUG，此时assert将执行运行时检查。<br><span class="hljs-bullet">2.</span> 可以使用一个#define语句定义NDEBUG，从而关闭调试状态。同时，很多编译器都提供了一个命令行选项使我们可以定义预处理变量：<br><span class="hljs-code">	CC -D NDEBUG main.c #这条命令等价于在main.c文件的一开始写#define NDEBUG</span><br><span class="hljs-code">3. 定义NDEBUG能避免检查各种条件所需的运行时开销，当然此时根本就不会执行运行时检查。因此，assert应该仅用于验证那些确实不可能发生的。我们可以把assert当成调试程序的一种辅助手段，但是不能用它替代真正的运行时逻辑检查，也不能替代程序本身应该包含的错误检查。</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//除了用于assert之外，也可以使用NDEBUG编写自己的条件调试代码</span><br><span class="hljs-comment">//如果NDEBUG未定义，将执行#ifndef和#endif之间的代码</span><br><span class="hljs-comment">//如果定义了，这些代码将被忽略掉</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ia[], <span class="hljs-keyword">size_t</span> sz)</span></span>&#123;<br>    <span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> NDEBUG</span><br>    <span class="hljs-comment">//_ _func_ _是编译器定义的一个局部静态变量，用于存放函数的名字</span><br>    cout&lt;&lt;_ _func_ _&lt;&lt;<span class="hljs-string">&quot;：array size is &quot;</span> &lt;&lt; sz &lt;&lt; endl;<br>    <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>由编译器和预处理器定义的几个对调试程序有用的名字</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">1.</span> _ _func_ _，是<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>的一个数组，用于存放函数名字;<br><span class="hljs-number">2.</span> _ _FILE_ _，存放文件名的字符串字面值;<br><span class="hljs-number">3.</span> _ _TIME_ _，存放文件编译时间的字符串字面值;<br><span class="hljs-number">4.</span> _ _DATE_ _，存放文件编译日期的字符串字面值<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.47 改写6.3.2练习中使用递归输出vector内容的程序，使其有条件的输出与执行过程有关的信息。例如，每次调用时输出vector对象的大小。分别在打开和关闭调试器的情况下编译并执行这个程序。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;vector&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> std;<br><span class="hljs-comment">//递归输出vector&lt;int&gt;的内容</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt; vInt, <span class="hljs-keyword">unsigned</span> index)</span></span>&#123;<br>    <span class="hljs-keyword">unsigned</span> sz = vInt.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-comment">//设置在此处输出调试信息</span><br>    <span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> NDEBUG</span><br>    cout &lt;&lt;<span class="hljs-string">&quot;vector对象的大小是：&quot;</span> &lt;&lt; sz &lt;&lt; endl;<br>    <span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br>    <span class="hljs-keyword">if</span>(!vInt.<span class="hljs-built_in">empty</span>() &amp;&amp; sz != index)&#123;<br>        cout &lt;&lt; vInt[index] &lt;&lt;endl;<br>        <span class="hljs-built_in">print</span>(vInt, index + <span class="hljs-number">1</span>);<br>    &#125;<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    vector&lt;<span class="hljs-keyword">int</span>&gt; v&#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>&#125;;<br>    <span class="hljs-built_in">print</span>(v, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//打开调试器时，每次递归调用print函数都会输出&quot;vector对象的大小是：6&quot;</span><br><span class="hljs-comment">//关闭调试器时，程序只输出vector对象的内容，不再输出其大小</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.48 说明下面这个循环的含义，它对assert的使用合理吗？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string s;<br><span class="hljs-keyword">while</span>(cin &gt;&gt; s &amp;&amp; s != sought)&#123;<br>    <br>&#125;<br><span class="hljs-built_in">assert</span>(cin);<br><span class="hljs-comment">//该程序对assert的使用有不合理之处</span><br><span class="hljs-comment">//在调试器打开的情况下，当用户输入字符串s并且s的内容与sought不相等时，执行循环体</span><br><span class="hljs-comment">//否则继续执行assert(cin);语句</span><br><span class="hljs-comment">//程序执行到assert的原因可能为两种</span><br><span class="hljs-comment">//一是用户终止了输入，二是用户输入的内容正好与sought的内容一样</span><br><span class="hljs-comment">//如果用户尝试终止输入，则assert的条件为假，输出错误信息，这一程序的原意是不相符的</span><br><span class="hljs-comment">//当调试器关闭时，assert什么也不做</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="实参类型转换"><a href="#实参类型转换" class="headerlink" title="实参类型转换"></a>实参类型转换</h4><ol>
+<li><p>在大多数情况下，我们容易确定某次调用应该选用哪个重载函数。然而，当几个重载函数的形参数量相等以及某些形参的类型可以由其它类型转换而来时，匹配正确的重载函数就会变的比较麻烦，如下例所示：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">()</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">f</span><span class="hljs-params">(<span class="hljs-keyword">double</span>, <span class="hljs-keyword">double</span> = <span class="hljs-number">3.14</span>)</span></span>;<br><span class="hljs-built_in">f</span>(<span class="hljs-number">5.6</span>); <span class="hljs-comment">//调用void f(double, double)</span><br></code></pre></td></tr></table></figure></li>
+<li><p>确定候选函数和可行函数：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 函数匹配的第一步就是选定本次调用对应的重载函数集，集合中的函数称为候选函数。<br><span class="hljs-bullet">2.</span> 候选函数具备两个特征：一是与被调用的函数同名，二是其声明在调用点可见，在上面的例子中，有4个名为f的候选函数。<br><span class="hljs-bullet">3.</span> 第二步是考察本次调用提供的实参，然后从候选函数中选出能被这组实参调用的函数，这些新选出的函数称为可行函数。<br><span class="hljs-bullet">4.</span> 可行函数也有两个特征：一是其形参数量与本次调用提供的实参数量相等，二是每个实参的类型与对应的形参类型相同，或者能转换成形参的类型。<br><span class="hljs-bullet">5.</span> 对于上面的例子而言，能根据实参的数量从候选函数中排除掉两个。不使用形参的函数和使用两个int形参的函数显然都不适合本次调用，这是因为调用只提供了一个实参，而它们分别有0个或者两个形参。<br><span class="hljs-bullet">6.</span> 使用一个int形参的函数和使用两个double形参的函数是可行的，它们都能用一个实参调用。需要注意的是，如果函数含有默认实参，则我们在调用该函数时传入的实参数量可能少于它实际使用的实参的数量。<br><span class="hljs-bullet">7.</span> 如果没找到可行函数，编译器将报告无匹配函数的错误。<br></code></pre></td></tr></table></figure></li>
+<li><p>寻找最佳匹配：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 函数匹配的第三步是从可行函数中选择与本次调用最匹配的函数。在这一过程中，逐一检查函数调用提供的实参，寻找形参类型和实参类型最匹配的那个可行函数。<br><span class="hljs-bullet">2.</span> “最匹配”的基本思想就是实参类型与形参类型越接近，它们匹配的越好。<br></code></pre></td></tr></table></figure></li>
+<li><p>含有多个形参的函数匹配：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 当实参的数量有两个或者更多时，函数匹配就比较复杂了。假定分析的例子为f(42, 2.56)。<br><span class="hljs-bullet">2.</span> 选择可行函数的方法和只有一个实参时相同，编译器选择那些形参数量满足要求并且实参类型和形参类型能够匹配的函数。此例中，可匹配的函数包括f(int, int)和f(double, double)。接下来，编译器依次检查每个实参以确定哪个函数是最佳匹配。如果有且仅有一个函数满足下列条件，则匹配成功。<br><span class="hljs-code">	（1）该函数的每个实参的匹配都不劣于其它可行函数需要的匹配。</span><br><span class="hljs-code">	（2）至少有一个实参的匹配优于其他可行函数提供的匹配。</span><br><span class="hljs-code">3. 如果在检查了所有实参之后没有任何一个函数脱颖而出，则该调用是错误的。编译器将报告二义性调用的消息。</span><br><span class="hljs-code">4. 对于上面的例子而言，f(int, int)在第一个实参上表现的更好；f(double, double)在第二个实参上表现的更好，编译器最终因为这个调用具有二义性而拒绝其请求。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.49 什么是候选函数，什么是可行函数？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//见上文</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.50 已知有217页对函数f的声明，对于下面的每一个调用列出可行函数。其中哪个函数是最佳匹配？如果调用不合法，是因为没有可匹配的函数还是因为调用具有二义性？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp">(a) <span class="hljs-built_in">f</span>(<span class="hljs-number">2.56</span>, <span class="hljs-number">42</span>);<br><span class="hljs-comment">//可行函数f(int, int)和f(double, double)</span><br><span class="hljs-comment">//由于调用具有二义性，不合法</span><br>(b) <span class="hljs-built_in">f</span>(<span class="hljs-number">42</span>);<br><span class="hljs-comment">//可行函数f(int)和f(double, double = 3.14)</span><br><span class="hljs-comment">//其中最佳匹配是void f(int)，因为参数无须进行任何转换</span><br>(c) <span class="hljs-built_in">f</span>(<span class="hljs-number">42</span>, <span class="hljs-number">0</span>);<br><span class="hljs-comment">//可行函数是f(int, int)和f(double, double)</span><br><span class="hljs-comment">//最佳匹配是f(int, int)</span><br>(d) <span class="hljs-built_in">f</span>(<span class="hljs-number">2.56</span>, <span class="hljs-number">3.14</span>);<br><span class="hljs-comment">//可行函数是f(int, int)和f(double, double)</span><br><span class="hljs-comment">//最佳匹配是f(double, double)</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.51 对6.50的答案进行验证。</p>
+</li>
+<li><p>为了确定最佳匹配，编辑器将实参类型到形参类型的转换划分为几个等级，具体排序如下所示：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 精确匹配，包括以下情况：<br><span class="hljs-code">	（1）实参类型和形参类型一致</span><br><span class="hljs-code">	（2）实参从数组类型或函数类型转换成对应的指针类型</span><br><span class="hljs-code">	（3）向实参添加顶层const或者从实参删除顶层const</span><br><span class="hljs-code">2. 通过const转换实现的匹配。</span><br><span class="hljs-code">3. 通过类型提升实现的匹配。</span><br><span class="hljs-code">4. 通过算数类型转换或者指针转换实现的匹配。</span><br><span class="hljs-code">5. 通过类类型转换实现的匹配。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>通过类型提升和算数类型转换的匹配：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//小整型一般都会提升到int类型或者更大的整数类型</span><br><span class="hljs-comment">//假设有两个函数，一个接受int，另一个接受short</span><br><span class="hljs-comment">//则只有当函数调用提供的是short类型的值时才会选择short版本的函数</span><br><span class="hljs-comment">//有时候，即使实参是一个很小的整数值，也会直接将其提升成int类型</span><br><span class="hljs-comment">//此时使用short版本反而会导致类型转换</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ff</span><span class="hljs-params">(<span class="hljs-keyword">int</span>)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">ff</span><span class="hljs-params">(<span class="hljs-keyword">short</span>)</span></span>;<br><span class="hljs-built_in">ff</span>(<span class="hljs-string">&#x27;a&#x27;</span>); <span class="hljs-comment">//char提升成int；调用f(int)</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//所有算数类型转换的级别都一样</span><br><span class="hljs-comment">//从int向unsigned int的转换并不比从int向double转换的级别高</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">manip</span><span class="hljs-params">(<span class="hljs-keyword">long</span>)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">manip</span><span class="hljs-params">(<span class="hljs-keyword">float</span>)</span></span>;<br><span class="hljs-built_in">manip</span>(<span class="hljs-number">3.14</span>); <span class="hljs-comment">//错误，二义性调用</span><br><span class="hljs-comment">//double技能转换成long也能转换成float</span><br><span class="hljs-comment">//因为存在两种可能的算数类型转换，所以该调用具有二义性</span><br></code></pre></td></tr></table></figure></li>
+<li><p>函数匹配和const实参：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//如果重载函数的区别在于它们的引用类型的形参是否引用了const</span><br><span class="hljs-comment">//或者指针类型的形参是否指向const</span><br><span class="hljs-comment">//则当调用发生时编译器通过实参是否是常量来决定选择哪个函数</span><br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(Account&amp;)</span></span>; <span class="hljs-comment">//函数的参数是Account的引用</span><br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Account&amp;)</span></span>; <span class="hljs-comment">//函数的参数是一个常量引用</span><br><span class="hljs-keyword">const</span> Account a;<br>Account b;<br><span class="hljs-built_in">lookup</span>(a); <span class="hljs-comment">//调用lookup(const Account&amp;)</span><br><span class="hljs-built_in">lookuo</span>(b); <span class="hljs-comment">//调用lookup(Account&amp;)</span><br><span class="hljs-comment">//在第一个调用中，我们传入的是const对象a</span><br><span class="hljs-comment">//因为不能把普通引用绑定到const对象上，所以此例中唯一可行的函数就是以常量引用作为形参的函数</span><br><span class="hljs-comment">//调用该函数与实参a精确匹配</span><br><span class="hljs-comment">//在第二个调用中，传入的是非常量对象b</span><br><span class="hljs-comment">//对于这个调用来说，两个函数都是可行的</span><br><span class="hljs-comment">//因为可以使用b初始化常量引用也可以使用b初始化非常量引用</span><br><span class="hljs-comment">//然而用非常量对象初始化常量引用需要类型转换，接受非常量形参的版本则与b精确匹配</span><br><span class="hljs-comment">//因此应该选用非常量版本的函数</span><br></code></pre></td></tr></table></figure></li>
+<li><p>指针类型的形参也类似。如果两个函数的唯一区别是它的指针形参指向常量或者非常量，则编译器能通过实参是否是常量决定选用哪个函数：如果实参是指向常量的指针，选用形参是const type *的函数；如果实参是指向非常量的指针，调用形参是普通指针的函数。</p>
+</li>
+<li><p>练习 6.52 已知有如下声明，请指出下列调用中每个类型转换的等级。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//声明</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">manip</span><span class="hljs-params">(<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>)</span></span>;<br><span class="hljs-keyword">double</span> dobj;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">manip</span>(<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">&#x27;z&#x27;</span>);<br><span class="hljs-comment">//发生的参数类型转换是类型提升，字符型实参自动提升为整型</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">manip</span>(<span class="hljs-number">55.4</span>, dobj);<br><span class="hljs-comment">//发生的参数类型转换是算数类型转换，双精度浮点数自动转换成整型。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.53 说明下列每组声明中的第二条语句会产生什么影响，并指出哪些不合法？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">int</span>&amp;, <span class="hljs-keyword">int</span>&amp;)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>&amp;, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>&amp;)</span></span>;<br><span class="hljs-comment">//合法的，两个函数的区别是它们的引用类型的形参是否引用了常量</span><br><span class="hljs-comment">//属于底层const，可以把两个函数区分开来</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">char</span>*, <span class="hljs-keyword">char</span>*)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>*, <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span>*)</span></span>;<br><span class="hljs-comment">//底层const可以把两个函数区分开来</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">char</span> *, <span class="hljs-keyword">char</span> *)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">char</span>* <span class="hljs-keyword">const</span>, <span class="hljs-keyword">char</span> *<span class="hljs-keyword">const</span>)</span></span>;<br><span class="hljs-comment">//非法的，向实参添加顶层const或者从实参删除顶层const属于精确匹配，无法区分两个函数</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/cpp-primer-11-40/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">cpp_primer_11_40</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/cpp-primer-9-40/">
+                        <span class="hidden-mobile">cpp_primer_9_40</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      jQuery('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      jQuery('#modalSearch').on('shown.bs.modal', function() {
+        jQuery('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

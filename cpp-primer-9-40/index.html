@@ -1,0 +1,548 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="Xie yue">
+  <meta name="keywords" content="">
+  
+  <title>cpp_primer_9_40 - 大树洞！</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="大树洞！" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>山丘与树洞</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="cpp_primer_9_40">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-06-01 09:30" pubdate>
+        2021年6月1日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      59
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">cpp_primer_9_40</h1>
+            
+            <div class="markdown-body">
+              <h4 id="无返回值函数"><a href="#无返回值函数" class="headerlink" title="无返回值函数"></a>无返回值函数</h4><ol>
+<li>没有返回值的return语句只能用在返回类型是void的函数中。返回void的函数不要求非得有return语句，因为这类函数的最后一句后面会隐式地执行return。</li>
+<li>一个返回类型是void的函数也能使用return语句的第二种形式，不过此时return语句的expression必须是另一个返回void的函数，强行令void函数返回其它类型的表达式将产生编译错误。</li>
+</ol>
+<h4 id="有返回值函数"><a href="#有返回值函数" class="headerlink" title="有返回值函数"></a>有返回值函数</h4><ol>
+<li><p>return语句的返回值的类型必须与函数的返回类型相同，或者能隐式的转换成函数的返回类型。</p>
+</li>
+<li><p>返回一个值的方式和初始化一个变量或形参的方式完全一样：返回的值用于初始化调用点的一个临时量，该临时量就是函数调用的结果。</p>
+</li>
+<li><p>注意函数返回局部变量时的初始化规则：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">string <span class="hljs-title">make_plural</span><span class="hljs-params">(<span class="hljs-keyword">size_t</span> ctr, <span class="hljs-keyword">const</span> string &amp;word, <span class="hljs-keyword">const</span> string &amp;ending)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (ctr &gt; <span class="hljs-number">1</span>) ? word + ending : word;<br>&#125;<br><span class="hljs-comment">//该函数的作用而：给定计数值、单词和结束符</span><br><span class="hljs-comment">//判断计数值是否大于1，如果是，返回单词的复数形式；</span><br><span class="hljs-comment">//如果不是，返回单词原型</span><br><span class="hljs-comment">//该函数的返回值类型是string，意味着返回值将被拷贝到调用点</span><br><span class="hljs-comment">//因此该函数将返回一个word的副本或者一个未命名的临时string对象，该对象的内容是word和ending的和</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//如果函数返回引用，则该引用是它所引对象的一个别名</span><br><span class="hljs-comment">//假定某函数挑出两个string形参中较短的那个并返回其引用</span><br><span class="hljs-function"><span class="hljs-keyword">const</span> string &amp;<span class="hljs-title">shorterString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> string &amp;s1, <span class="hljs-keyword">const</span> string &amp;s2)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> s1.<span class="hljs-built_in">size</span>() &lt;= s2.<span class="hljs-built_in">size</span>() ? s1 : s2;<br>&#125;<br><span class="hljs-comment">//其中形参和返回类型都是const string对象的引用</span><br><span class="hljs-comment">//不管是调用函数还是返回结果都不会真正拷贝string对象</span><br></code></pre></td></tr></table></figure></li>
+<li><p>函数完成后，它所占用的存储空间也随之释放。因此函数终止意味着局部变量的引用将指向不再有效的内存区域。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//严重错误，这个函数试图返回局部对象的引用</span><br><span class="hljs-function"><span class="hljs-keyword">const</span> string &amp;<span class="hljs-title">manip</span><span class="hljs-params">()</span></span>&#123;<br>    string ret;<br>    <span class="hljs-keyword">if</span>(!ret.<span class="hljs-built_in">empty</span>())&#123;<br>        <span class="hljs-keyword">return</span> ret; <span class="hljs-comment">//错误，返回局部对象的引用</span><br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;Empty&quot;</span>; <span class="hljs-comment">//错误，&quot;Empty&quot;是一个局部临时量</span><br>    &#125;<br>&#125;<br><span class="hljs-comment">//上面两条return语句都将返回未定义的值</span><br><span class="hljs-comment">//也就是说，试图使用manip函数的返回值将引发未定义的行为</span><br><span class="hljs-comment">//要想确保返回值安全，可以提醒自己一下，引用所引的是在函数之前已经存在的哪个对象？</span><br></code></pre></td></tr></table></figure></li>
+<li><p>返回局部对象的引用是错误的；同样，返回局部对象的指针也是错误的。一旦函数完成，局部对象被释放，指针将指向一个不存在的对象。</p>
+</li>
+<li><p>返回类类型的函数和调用运算符：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//调用运算符的优先级与点运算符和箭头运算符相同，并且也符合左结合率</span><br><span class="hljs-comment">//因此如果函数返回指针、引用或者类的对象，就能使用函数调用的结果访问结果对象的成员</span><br><span class="hljs-comment">//例：调用string对象的size成员，该string对象是由shortString函数返回的</span><br><span class="hljs-keyword">auto</span> sz = <span class="hljs-built_in">shortSting</span>(s1, s2).<span class="hljs-built_in">size</span>();<br><span class="hljs-comment">//因为上面提到的运算符都满足左结合率，所以shortString的结果是点运算符的左侧运算对象</span><br><span class="hljs-comment">//点运算符可以得到该string对象的size成员</span><br><span class="hljs-comment">//size又是第二个调用运算符的左侧运算对象</span><br></code></pre></td></tr></table></figure></li>
+<li><p>引用返回左值：函数的返回类型决定函数调用是否是左值。调用一个返回引用的函数得到左值，其它返回类型得到右值。可以像使用其它左值那样来使用返回引用的函数的调用，特别是，我们能为返回类型是非常量引用的函数的结果赋值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">char</span> &amp;<span class="hljs-title">get_val</span><span class="hljs-params">(<span class="hljs-keyword">const</span> string &amp;str, string::size_type ix)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> str[ix]; <span class="hljs-comment">//get_val假定索引值是有效的</span><br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-function">string <span class="hljs-title">s</span><span class="hljs-params">(<span class="hljs-string">&quot;a value&quot;</span>)</span></span>;<br>    cout &lt;&lt; s &lt;&lt; endl;<br>    <span class="hljs-built_in">get_val</span>(s, <span class="hljs-number">0</span>) = <span class="hljs-string">&#x27;A&#x27;</span>;<br>    cout &lt;&lt; s &lt;&lt;endl; <span class="hljs-comment">//输出A value</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><span class="hljs-comment">//如果返回类型是常量引用，不能给调用的结果赋值</span><br></code></pre></td></tr></table></figure></li>
+<li><p>列表初始化返回值：cpp11新标准规定，函数可以返回花括号包围的值的列表。类似于其他返回结果，此处的列表也用来对表示函数返回的临时量进行初始化。如果列表为空，临时量执行值初始化；否则，返回的值由函数的返回类型决定。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//在下面的函数中，返回一个vector对象，用它存放表示错误信息的string对象</span><br><span class="hljs-function">vector&lt;string&gt; <span class="hljs-title">process</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-comment">//...</span><br>    <span class="hljs-comment">//expected和actual是string对象</span><br>    <span class="hljs-keyword">if</span>(expected.<span class="hljs-built_in">empty</span>())&#123;<br>        <span class="hljs-keyword">return</span> &#123;&#125;; <span class="hljs-comment">//返回一个空vector对象</span><br>    &#125; <br>    <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(expected == actual)&#123;<br>        <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;funX&quot;</span>, <span class="hljs-string">&quot;okey&quot;</span>&#125;  <span class="hljs-comment">//返回列表初始化的vector对象</span><br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">return</span> &#123;<span class="hljs-string">&quot;funx&quot;</span>, actual, expected&#125;;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//如果函数返回的是内置类型，则花括号包围的列表最多包含一个值</span><br><span class="hljs-comment">//该值所占空间不应该大于目标类型的空间</span><br><span class="hljs-comment">//如果函数返回的是类类型，由类本身定义初始值如何使用</span><br></code></pre></td></tr></table></figure></li>
+<li><p>主函数main的返回值：允许main函数没有return语句直接结束。如果控制达到了main函数的结尾处而且没有return语句，编译器将隐式的插入一条返回0的return语句。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//main函数的返回值可以看作是状态指示器</span><br><span class="hljs-comment">//返回0表示执行成功，返回其它值表示执行失败，其中非0值具体含义依机器而定</span><br><span class="hljs-comment">//为了使返回值与机器无关，cstdlib头文件定义了两个预处理变量，我们可以使用这两个变量分别表示成功和失败</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(some_failure)&#123;<br>        <span class="hljs-keyword">return</span> EXIT_FAILURE; <span class="hljs-comment">//定义在cstdlib头文件中</span><br>    &#125;<br>    <span class="hljs-keyword">else</span>&#123;<br>        <span class="hljs-keyword">return</span> EXIT_SUCCESS; <span class="hljs-comment">//定义在cstdlib头文件中</span><br>    &#125;<br>&#125;<br><span class="hljs-comment">//因为它们是预处理变量，所以既不能在前面加上std::，也不能在using声明中出现</span><br></code></pre></td></tr></table></figure></li>
+<li><p>递归</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">factorial</span><span class="hljs-params">(<span class="hljs-keyword">int</span> val)</span></span>&#123;<br>    <span class="hljs-keyword">if</span>(val &gt; <span class="hljs-number">1</span>)&#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-built_in">factorial</span>(val - <span class="hljs-number">1</span>) * val;<br>    &#125;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.30 编译第200页的str_subrange函数，看看你的编译器是如何处理函数中的错误的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//编译器发现了一个严重错误，即for循环中的return语句是非法的</span><br><span class="hljs-comment">//函数的返回类型是布尔值，而该条return语句没有任何返回值。</span><br><span class="hljs-comment">//事实上程序还存在另一个严重错误</span><br><span class="hljs-comment">//按照程序的逻辑，for循环有可能不会中途退出而是一直执行完毕</span><br><span class="hljs-comment">//此时显然缺少一条return语句处理这种情况，但是编译器无法发现这种错误</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.31 什么情况下返回的引用无效？什么情况下返回常量的引用有效？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//如果引用的是函数开始之前就存在的对象，则返回该引用是有效的</span><br><span class="hljs-comment">//如果引用所引的是函数的局部变量，则随着函数结束，局部变量也失效了，此时返回的引用无效</span><br><span class="hljs-comment">//当不希望返回的对象被修改时，返回对常量的引用</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.32 下面的函数合法吗？如果合法，说明其功能；如果不合法，修改其中的错误并解释原因。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> &amp;<span class="hljs-title">get</span><span class="hljs-params">(<span class="hljs-keyword">int</span> *arry, <span class="hljs-keyword">int</span> index)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> arry[index];<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    <span class="hljs-keyword">int</span> ia[<span class="hljs-number">10</span>];<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i != <span class="hljs-number">10</span>; ++i)&#123;<br>        <span class="hljs-built_in">get</span>(ia, i) = i;<br>    &#125;<br>&#125;<br><span class="hljs-comment">//该函数是合法的。get函数接收一个整型指针，该指针实际指向一个整型数组的首元素</span><br><span class="hljs-comment">//另外还接收一个整数表示数组的某个元素</span><br><span class="hljs-comment">//当get函数执行完毕后，调用者得到实参数组arry中索引为index的元素的引用</span><br><span class="hljs-comment">//在main函数中，首先创建一个包含10个整数的数组，名字是ia</span><br><span class="hljs-comment">//由于ia定义在main函数的内部，所以ia不会执行默认初始化操作</span><br><span class="hljs-comment">//如果此时我们直接输出ia每个元素的值，则这些值都是未定义的</span><br><span class="hljs-comment">//进入循环后，每次循环使用get函数得到数组ia中第i个元素的引用，为该引用赋值i</span><br><span class="hljs-comment">//也就是说，为第i个元素赋值i</span><br><span class="hljs-comment">//循环结束时,ia的元素依次被赋值为0~9</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.33 编写一个递归函数，输出vector对象的内容</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(vector&lt;<span class="hljs-keyword">int</span>&gt; vInt, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> index)</span></span>&#123;<br>    <span class="hljs-keyword">auto</span> size = vInt.<span class="hljs-built_in">size</span>();<br>    <span class="hljs-keyword">if</span>(!vInt.<span class="hljs-built_in">empty</span>() &amp;&amp; index &lt; size)&#123;<br>        cout &lt;&lt; vInt[index]&lt;&lt;endl;<br>    &#125;<br>    <span class="hljs-built_in">print</span>(vInt, index + <span class="hljs-number">1</span>);<br>&#125;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    vector&lt;<span class="hljs-keyword">int</span>&gt; v = &#123;<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>&#125;;<br>    <span class="hljs-built_in">print</span>(v, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.34 如果factorial函数的停止条件如下所示，将发生什么情况？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//因为原文中递归函数的参数类型是int</span><br><span class="hljs-comment">//所以理论上用户传入factorial函数的参数可以是负数</span><br><span class="hljs-comment">//按照原程序的逻辑，参数为负数时函数的返回值为1</span><br><span class="hljs-comment">//如果修改条件，则当参数为负时，会依次递归下去直至溢出</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.35 在调用factorial函数时，为什么传入的值是val - 1而不是val–?</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//如果把val - 1变成val--，则出现一种我们不希望看到的情况</span><br><span class="hljs-comment">//即变量的递增操作与读取变量值的操作共存于同一表达式中，这时有可能产生未定义的值</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="返回数组指针"><a href="#返回数组指针" class="headerlink" title="返回数组指针"></a>返回数组指针</h4><ol>
+<li><p>因为数组不能被拷贝，所以函数不能返回数组。不过函数可以返回数组的引用或者指针。虽然从语法上来说，要想定义一个返回数组的指针或引用的函数比较繁琐，但是有一些方法可以简化这个任务，其中最直接的方法就是使用类型别名。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> arrT[<span class="hljs-number">10</span>]; <span class="hljs-comment">//arrT是一个类型别名，它表示的类型是含有10个整数的数组</span><br><span class="hljs-keyword">using</span> arrT = <span class="hljs-keyword">int</span>[<span class="hljs-number">10</span>]; <span class="hljs-comment">//等价写法</span><br><span class="hljs-function">arrT* <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span></span>;    <span class="hljs-comment">//func返回一个指向含有10个整数的数组的指针</span><br></code></pre></td></tr></table></figure></li>
+<li><p>声明一个返回数组指针的函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//要想在声明func时不使用类型别名，我们必须牢记被定义的名字后面数组的维度</span><br><span class="hljs-keyword">int</span> arr[<span class="hljs-number">10</span>]; <span class="hljs-comment">//arr是一个含有10个整数的数组</span><br><span class="hljs-keyword">int</span> *p1[<span class="hljs-number">10</span>]; <span class="hljs-comment">//p1时一个含有10个指针的数组</span><br><span class="hljs-built_in"><span class="hljs-keyword">int</span></span> (*p2)[<span class="hljs-number">10</span>] = &amp;arr; <span class="hljs-comment">//p2是一个指针，它指向含有10个整数的数组</span><br><span class="hljs-comment">//和这些声明一样，如果我们想定义一个返回数组指针的函数，则数组的维度必须跟在函数名字之后</span><br><span class="hljs-comment">//然而，函数的形参列表也跟在函数名字之后并且形参列表应该先于数组的维度</span><br><span class="hljs-comment">//因此，返回数组指针的函数形式如下所示：</span><br><span class="hljs-built_in">Type</span> (*<span class="hljs-built_in">function</span>(parameter_list))[dimension];<br><span class="hljs-comment">//类似于其他数组的声明，Type表示元素的类型，dimension表示数组的维度</span><br><span class="hljs-comment">//(*function(parameter_list))两端的括号必须存在</span><br><span class="hljs-comment">//就像我们定义p2时两端必须有括号一样</span><br><span class="hljs-comment">//如果没有这对括号，函数的返回类型将是指针的数组</span><br><span class="hljs-built_in"><span class="hljs-keyword">int</span></span> (*<span class="hljs-built_in">func</span>(<span class="hljs-keyword">int</span> i))[<span class="hljs-number">10</span>];<br><span class="hljs-comment">//可以按照以下顺序来逐层理解该声明的含义</span><br><span class="hljs-comment">//func(int i)表示调用func函数时需要一个int类型的实参</span><br><span class="hljs-comment">//(*func(int i)) 意味着我们可以对这个函数的结果执行解引用操作</span><br><span class="hljs-comment">//(*func(int i))[10] 表示解引用func的调用将得到一个大小是10的数组</span><br><span class="hljs-comment">//int (*func(int i))[10]表示数组中的元素是int类型</span><br></code></pre></td></tr></table></figure></li>
+<li><p>使用尾置返回类型</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//任何函数的定义都能使用尾置返回，但是这种类型对于返回类型比较复杂的函数最有效</span><br><span class="hljs-comment">//比如返回类型是数组的指针或者数组的引用</span><br><span class="hljs-comment">//尾置返回类型跟在形参列表后面并以一个 -&gt;符号开头</span><br><span class="hljs-comment">//为了表示函数真正的返回类型跟在形参列表之后，在本应该出现返回类型的地方放置一个auto</span><br><span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">func</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i)</span> -&gt; <span class="hljs-title">int</span><span class="hljs-params">(*)</span>[10]</span>;<br></code></pre></td></tr></table></figure></li>
+<li><p>使用decltype</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//还有一种情况，如果我们知道函数返回的指针将指向哪个数组</span><br><span class="hljs-comment">//就可以使用decltype关键字声明返回类型</span><br><span class="hljs-comment">//例如：下面的函数返回一个指针，该指针根据参数i的不同指向两个已知数组中的某一个</span><br><span class="hljs-keyword">int</span> odd[] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>, <span class="hljs-number">7</span>, <span class="hljs-number">9</span>&#125;;<br><span class="hljs-keyword">int</span> even[] = &#123;<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>, <span class="hljs-number">8</span>, <span class="hljs-number">10</span>&#125;;<br><span class="hljs-keyword">decltype</span>(odd) *<span class="hljs-built_in">arrPtr</span>(<span class="hljs-keyword">int</span> i)&#123;<br>    <span class="hljs-keyword">return</span> (i % <span class="hljs-number">2</span>) ? &amp;odd : &amp;even; <span class="hljs-comment">//返回一个指向数组的指针</span><br>&#125;<br><span class="hljs-comment">//arrPtr使用关键字decltype表示它的返回类型是个指针</span><br><span class="hljs-comment">//并且该指针所指的对象与odd类型一致，因为odd是数组</span><br><span class="hljs-comment">//所以arrPtr返回一个指向含有五个整数的数组的指针</span><br><span class="hljs-comment">//有一个地方需要注意：decltype并不负责把数组类型转换成对应的指针，所以decltype的结果是一个数组</span><br><span class="hljs-comment">//要想表示arrPtr返回指针还必须在函数声明时加一个*符号</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.36 编写一个函数的声明，使其返回数组的引用并且该数组包含10个string类型的对象。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">string</span> (&amp;<span class="hljs-built_in">func</span>())[<span class="hljs-number">10</span>];<br><span class="hljs-comment">//func()表示调用该函数无须任何实参</span><br><span class="hljs-comment">//(&amp;func())表示函数的返回结果是一个引用</span><br><span class="hljs-comment">//(&amp;func())[10]表示引用的对象是一个维度为10的数组</span><br><span class="hljs-comment">//string (&amp;func())[10]表示数组的元素是string对象</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.37 使用类型别名、尾置返回类型和decltype关键字重写上一题。说明每种方式的优劣。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//类型别名</span><br><span class="hljs-keyword">typedef</span> string arr[<span class="hljs-number">10</span>];<br><span class="hljs-keyword">using</span> arr = string[<span class="hljs-number">10</span>];<br><span class="hljs-function">arr &amp; <span class="hljs-title">func</span><span class="hljs-params">()</span></span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//尾置返回类型</span><br><span class="hljs-function"><span class="hljs-keyword">auto</span> <span class="hljs-title">func</span><span class="hljs-params">()</span> -&gt; <span class="hljs-title">string</span><span class="hljs-params">(&amp;)</span>[10]</span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//decltype关键字</span><br>string str[<span class="hljs-number">10</span>];<br><span class="hljs-keyword">decltype</span>(str) &amp;<span class="hljs-built_in">func</span>();<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.38 修改arrPtr函数，使其返回数组的引用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//数组也是一个对象，所以可以定义数组的引用</span><br><span class="hljs-comment">//要想为数组的引用赋值，只要把数组名赋给该引用即可</span><br><span class="hljs-keyword">int</span> odd[] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">3</span>, <span class="hljs-number">5</span>&#125;;<br><span class="hljs-keyword">int</span> even[] = &#123;<span class="hljs-number">2</span>, <span class="hljs-number">4</span>, <span class="hljs-number">6</span>&#125;;<br><span class="hljs-keyword">decltype</span>(odd) &amp;<span class="hljs-built_in">arrPtr</span>(<span class="hljs-keyword">int</span> i)&#123;<br>    <span class="hljs-keyword">return</span> (i % <span class="hljs-number">2</span>) ? odd : even;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="重载与作用域"><a href="#重载与作用域" class="headerlink" title="重载与作用域"></a>重载与作用域</h4><ol>
+<li><p>如果同一个作用域中的几个函数名字相同但是形参列表不同，我们称之为重载函数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cp)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> *beg, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> *end)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">print</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ia[], <span class="hljs-keyword">size_t</span> size)</span></span>;<br><span class="hljs-comment">//这些函数接受的形参类型不一样，但是执行的操作非常类似</span><br><span class="hljs-comment">//当调用这些函数时，编译器会根据传递的实惨类型推断想要的是哪个函数</span><br><span class="hljs-keyword">int</span> j[<span class="hljs-number">2</span>] = &#123;<span class="hljs-number">0</span>, <span class="hljs-number">1</span>&#125;;<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello world&quot;</span>); <span class="hljs-comment">//调用print(const char *cp)</span><br><span class="hljs-built_in">print</span>(j, <span class="hljs-built_in">end</span>(j) - <span class="hljs-built_in">begin</span>(j));<span class="hljs-comment">//调用print(const int *, size_t size)</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">begin</span>(j), <span class="hljs-built_in">end</span>(j)); <span class="hljs-comment">//调用print(const int *, const int *)</span><br></code></pre></td></tr></table></figure></li>
+<li><p>main函数不能重载。</p>
+</li>
+<li><p>定义重载函数：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//有一种典型的数据库应用，需要创建几个不同的函数分别根据名字、电话、账户号码等信息查找记录</span><br><span class="hljs-comment">//函数重载可以使我们定义一组函数，它们的名字都是lookup，但是查找的依据不同</span><br><span class="hljs-comment">//能通过以下形式的任意一种调用lookup函数</span><br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Account&amp;)</span></span>;<br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Phone&amp;)</span></span>;<br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Name&amp;)</span></span>;<br>Account acct;<br>Phone phone;<br>Record r1 = <span class="hljs-built_in">lookup</span>(acct);<br>Record r2 = <span class="hljs-built_in">lookup</span>(phone);<br></code></pre></td></tr></table></figure></li>
+<li><p>对于重载的函数来说，它们应该在形参数量或形参类型上有所不同。在上面的代码中，虽然每个函数都只接收一个参数，但是参数的类型不同。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Account&amp;)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Account&amp;)</span></span>; <span class="hljs-comment">//错误，和上一个函数相比只有返回类型不同</span><br></code></pre></td></tr></table></figure></li>
+<li><p>判断两个形参的类型是否相异：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//有时候形参列表看起来不同，但实际上是一致的</span><br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Account &amp;acct)</span></span>;<br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Account&amp;)</span></span>; <span class="hljs-comment">//省略了形参的名字</span><br><br><span class="hljs-keyword">typedef</span> Phone Telno;<br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Phone&amp;)</span></span>;<br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Telno&amp;)</span></span>;<br></code></pre></td></tr></table></figure></li>
+<li><p>重载和const形参</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//顶层const不影响传入函数的对象</span><br><span class="hljs-comment">//一个拥有顶层const的形参无法和另一个没有顶层const的形参区分开来</span><br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(Phone)</span></span>;<br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Phone)</span></span>; <span class="hljs-comment">//重复声明了Record lookup(Phone)</span><br><br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(Phone*)</span></span>;<br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(Phone* <span class="hljs-keyword">const</span>)</span></span>; <span class="hljs-comment">//重复声明</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//另一方面，如果形参是某种类型的指针或者引用</span><br><span class="hljs-comment">//则通过区分其指向的是常量对象还是非常量对象可以实现函数重载，此时的const是底层的</span><br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(Account&amp;)</span></span>; <span class="hljs-comment">//函数作用于Account的引用</span><br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Account&amp;)</span></span>; <span class="hljs-comment">//新函数，作用于常量引用</span><br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(Account*)</span></span>; <span class="hljs-comment">//新函数，作用于指向Account的指针</span><br><span class="hljs-function">Record <span class="hljs-title">lookup</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Account*)</span></span>; <span class="hljs-comment">//新函数，作用于指向Account的指针</span><br><span class="hljs-comment">//在上面的例子中，编译器可以通过实参是否是常量来推断应该调用哪个函数</span><br><span class="hljs-comment">//因为const不能转换成其它类型，所以我们只能把const对象（或指向const的指针）传递给const形参</span><br><span class="hljs-comment">//相反的，因为非常量可以转换成const</span><br><span class="hljs-comment">//所以上面四个函数都能作用于非常量对象或者指向非常量对象的指针</span><br><span class="hljs-comment">//当我们传递一个非常量对象或者指向非常量对象的指针时，编译器会优先选用非常量版本的函数</span><br></code></pre></td></tr></table></figure></li>
+<li><p>const_cast和重载</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//比较两个string对象的长度，返回较短的那个引用</span><br><span class="hljs-function"><span class="hljs-keyword">const</span> string &amp;<span class="hljs-title">shorterString</span><span class="hljs-params">(<span class="hljs-keyword">const</span> string &amp;s1, <span class="hljs-keyword">const</span> string &amp;s2)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> s1.<span class="hljs-built_in">size</span>() &lt;= s2.<span class="hljs-built_in">size</span>() ? s1 : s2;<br>&#125;<br><span class="hljs-comment">//这个函数的参数和返回类型都是const string的引用</span><br><span class="hljs-comment">//可以对两个非常量的string实参调用这个函数，但返回的结果都是const string的引用</span><br><span class="hljs-comment">//因此我们需要一种新的shorterString函数，当它的实参不是常量时，得到的结果是一个普通的引用</span><br><span class="hljs-comment">//使用const_cast可以做到这一点</span><br><span class="hljs-function">string &amp;<span class="hljs-title">shorterString</span><span class="hljs-params">(string &amp;s1, string &amp;s2)</span></span>&#123;<br>    <span class="hljs-keyword">auto</span> &amp;r = <span class="hljs-built_in">shorterString</span>(<span class="hljs-keyword">const_cast</span>&lt;<span class="hljs-keyword">const</span> string&amp;&gt;(s1),<br>                           	<span class="hljs-keyword">const_cast</span>&lt;<span class="hljs-keyword">const</span> string&amp;&gt;(s2));<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">const_cast</span>&lt;string&amp;&gt;(r);<br>&#125;<br><span class="hljs-comment">//在这个版本的函数中，首先将它的实参强制转换成了对const的引用</span><br><span class="hljs-comment">//然后调用了shorterString函数的const版本，const版本返回对const string的引用</span><br><span class="hljs-comment">//这个引用事实上绑定在了某个初始的非常量实参上</span><br><span class="hljs-comment">//因此，我们可以将其转换成一个普通的string&amp;，这显然是安全的</span><br></code></pre></td></tr></table></figure></li>
+<li><p>调用重载的函数</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 函数匹配是一个过程，在这个过程中我们把函数调用与一组重载函数中的某一个关联起来，函数匹配也叫做重载确定。编译器首先将调用的实参与重载集合中每一个函数的形参进行比较，然后根据比较的结果决定究竟调用哪个函数。<br><span class="hljs-bullet">2.</span> 当调用重载函数时，有三种可能的结果：<br><span class="hljs-code">	（1）编译器找到一个与实参最佳匹配的函数，并生成调用该函数的代码。</span><br><span class="hljs-code">	（2）找不到任何一个函数与调用的实参匹配，此时编译器发出无匹配的错误信息。</span><br><span class="hljs-code">	（3）有多于一个函数可以匹配，但是每一个都明显不是最佳选择，此时也将发生错误，称为二义性调用。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 6.39 说明在下面的每组声明中第二条声明语句是何含义。如果有非法的声明，请指出来。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">int</span>, <span class="hljs-keyword">int</span>)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">calc</span><span class="hljs-params">(<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>, <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span>)</span></span>;<br><span class="hljs-comment">//第二个声明式非法的</span><br><span class="hljs-comment">//它的意图是声明另外一个函数，该函数只接受整型常量作为实参</span><br><span class="hljs-comment">//但是因为顶层const不影响传入函数的对象，所以一个拥有顶层const的形参无法与另一个没有顶层const的形参区分</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">get</span><span class="hljs-params">()</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">get</span><span class="hljs-params">()</span></span>;<br><span class="hljs-comment">//第二个声明是非法的，它的意图是通过函数的返回值区分两个同名的函数</span><br><span class="hljs-comment">//但是这不可行，因为cpp规定重载函数必须在形参数量或形参类型上有所区别。</span><br><span class="hljs-comment">//如果两个同名函数的形参数量和类型都一样，那么即使返回类型不同也不行。</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> * <span class="hljs-title">reset</span><span class="hljs-params">(<span class="hljs-keyword">int</span> *)</span></span>;<br><span class="hljs-function"><span class="hljs-keyword">double</span> *<span class="hljs-title">reset</span><span class="hljs-params">(<span class="hljs-keyword">double</span> *)</span></span>;<span class="hljs-comment">//合法</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/cpp-primer-10-40/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">cpp_primer_10_40</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/cpp-primer-8-40/">
+                        <span class="hidden-mobile">cpp_primer_8_40</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      jQuery('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      jQuery('#modalSearch').on('shown.bs.modal', function() {
+        jQuery('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,667 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="cpp_primer_5th_chapter4
+第三章内容的总结 + 部分第四章内容">
+  <meta name="author" content="Xie yue">
+  <meta name="keywords" content="">
+  
+  <title>cpp_primer_5_40 - 大树洞！</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="大树洞！" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>山丘与树洞</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="cpp_primer_5_40">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-25 17:41" pubdate>
+        2021年5月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      10k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      119
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">cpp_primer_5_40</h1>
+            
+            <div class="markdown-body">
+              <p>cpp_primer_5th_chapter4</p>
+<p>第三章内容的总结 + 部分第四章内容</p>
+<span id="more"></span>
+
+<h4 id="指针和多维数组"><a href="#指针和多维数组" class="headerlink" title="指针和多维数组"></a>指针和多维数组</h4><ol>
+<li><p>当程序使用多维数组的名字时，也会自动将其转换成指向数组首元素的指针。因为多维数组实际上是数组的数组，所以由多维数组名转化而来的指针实际上是指向第一个内层数组的指针：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> ia[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>]; <span class="hljs-comment">//大小为3的数组，每个元素是含有四个整数的数组</span><br><span class="hljs-built_in"><span class="hljs-keyword">int</span></span> (*p)[<span class="hljs-number">4</span>] = ia; <span class="hljs-comment">//p指向含有4个整数的数组</span><br>p = &amp;ia[<span class="hljs-number">2</span>]; <span class="hljs-comment">//p指向ia的尾元素</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> *ip[<span class="hljs-number">4</span>]; <span class="hljs-comment">//整型指针的数组</span><br><span class="hljs-built_in"><span class="hljs-keyword">int</span></span> (*ip)[<span class="hljs-number">4</span>]; <span class="hljs-comment">//指向含有四个整数的数组</span><br></code></pre></td></tr></table></figure></li>
+<li><p>auto和decltype的使用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> p = ia; p != ia + <span class="hljs-number">3</span>; p++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> q = *p; q != *p + <span class="hljs-number">4</span>; q++)&#123;<br>        cout &lt;&lt; *q &lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>    cout&lt;&lt;endl;<br>&#125;<br><span class="hljs-comment">//p是一个指针，指向保存每一行元素的数组</span><br><span class="hljs-comment">//*p是一个含有四个整数的数组</span><br><span class="hljs-comment">//所以数组名被自动的转换成指向该数组首元素的指针</span><br><span class="hljs-comment">//q是一个指针，指向内层数组首元素</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//使用begin和end实现同样的功能</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> p = <span class="hljs-built_in">begin</span>(ia); p != <span class="hljs-built_in">end</span>(ia); p++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> q = <span class="hljs-built_in">begin</span>(*p); q != <span class="hljs-built_in">end</span>(*p); q++)&#123;<br>        cout&lt;&lt; *q &lt;&lt;<span class="hljs-string">&quot; &quot;</span>; <span class="hljs-comment">//输出q所指的整数值</span><br>    &#125;<br>    cout&lt;&lt;endl;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>类型别名简化多维数组的指针</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//两种等价的类型别名声明</span><br><span class="hljs-keyword">using</span> int_array = <span class="hljs-keyword">int</span>[<span class="hljs-number">4</span>];<br><span class="hljs-keyword">typedef</span> <span class="hljs-keyword">int</span> int_array[<span class="hljs-number">4</span>];<br><span class="hljs-keyword">for</span>(int_array *p = ia; p != ia + <span class="hljs-number">3</span>; p++)&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> *q = *p; q != *p + <span class="hljs-number">4</span>; ++q)&#123;<br>        cout&lt;&lt; *q &lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>    cout&lt;&lt;endl;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习3.43 编写三个不同版本的程序，令其均能输出ia的元素。此外，三个版本中的程序都要直接写出数据类型，不能使用类型别名，auto关键字或者decltype关键字</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> ia[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123; <span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span> &#125;;<br>	cout &lt;&lt; <span class="hljs-string">&quot;利用范围for语句输出多维数组的内容：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-built_in"><span class="hljs-keyword">int</span></span>(&amp;row)[<span class="hljs-number">4</span>] : ia) &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> val : row) &#123;<br>			cout &lt;&lt; val &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>		&#125;<br>		cout &lt;&lt; endl;<br>	&#125;<br>	cout &lt;&lt; <span class="hljs-string">&quot;利用普通for语句和下标运算符输出多维数组的内容：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">4</span>; j++) &#123;<br>			cout &lt;&lt; ia[i][j] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>		&#125;<br>		cout &lt;&lt; endl;<br>	&#125;<br>	cout &lt;&lt; <span class="hljs-string">&quot;利用普通for循环和指针输出多维数组的内容：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-built_in"><span class="hljs-keyword">int</span></span>(*p)[<span class="hljs-number">4</span>] = ia; p &lt; ia + <span class="hljs-number">3</span>; p++) &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>* q = *p; q &lt; *p + <span class="hljs-number">4</span>; q++) &#123;<br>			cout &lt;&lt; *q &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>		&#125;<br>		cout &lt;&lt; endl;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习3.44 改写上一个练习中的程序，使用类型别名来代替循环控制变量的类型</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">using</span> int_array = <span class="hljs-keyword">int</span>[<span class="hljs-number">4</span>];<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> ia[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123; <span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span> &#125;;<br>	cout &lt;&lt; <span class="hljs-string">&quot;利用范围for语句输出多维数组的内容：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span> (int_array &amp;row: ia ) &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> val : row) &#123;<br>			cout &lt;&lt; val &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>		&#125;<br>		cout &lt;&lt; endl;<br>	&#125;<br>	cout &lt;&lt; <span class="hljs-string">&quot;利用普通for语句和下标运算符输出多维数组的内容：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">4</span>; j++) &#123;<br>			cout &lt;&lt; ia[i][j] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>		&#125;<br>		cout &lt;&lt; endl;<br>	&#125;<br>	cout &lt;&lt; <span class="hljs-string">&quot;利用普通for循环和指针输出多维数组的内容：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span> (int_array* p = ia; p &lt; ia + <span class="hljs-number">3</span>; p++) &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span>* q = *p; q &lt; *p + <span class="hljs-number">4</span>; q++) &#123;<br>			cout &lt;&lt; *q &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>		&#125;<br>		cout &lt;&lt; endl;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习3.45 再一次改写程序，这次使用auto关键字</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> ia[<span class="hljs-number">3</span>][<span class="hljs-number">4</span>] = &#123; <span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>,<span class="hljs-number">9</span>,<span class="hljs-number">10</span>,<span class="hljs-number">11</span> &#125;;<br>	cout &lt;&lt; <span class="hljs-string">&quot;利用范围for语句输出多维数组的内容：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> &amp;row: ia ) &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> val : row) &#123;<br>			cout &lt;&lt; val &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>		&#125;<br>		cout &lt;&lt; endl;<br>	&#125;<br>	cout &lt;&lt; <span class="hljs-string">&quot;利用普通for语句和下标运算符输出多维数组的内容：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">3</span>; i++) &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">4</span>; j++) &#123;<br>			cout &lt;&lt; ia[i][j] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>		&#125;<br>		cout &lt;&lt; endl;<br>	&#125;<br>	cout &lt;&lt; <span class="hljs-string">&quot;利用普通for循环和指针输出多维数组的内容：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> p = ia; p &lt; ia + <span class="hljs-number">3</span>; p++) &#123;<br>		<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span> q = *p; q &lt; *p + <span class="hljs-number">4</span>; q++) &#123;<br>			cout &lt;&lt; *q &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>		&#125;<br>		cout &lt;&lt; endl;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="第三章总结"><a href="#第三章总结" class="headerlink" title="第三章总结"></a>第三章总结</h4><ol>
+<li><p>术语表</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs arduino"><span class="hljs-number">1.</span> begin：string和vector的成员，返回指向第一个元素的迭代器。也是一个标准库函数，输入一个数组，返回指向该数组首元素的指针。<br><span class="hljs-number">2.</span> 缓冲区溢出：一种严重的程序故障，主要的原因是试图通过一个越界的索引访问容器内容，容器类型包括string、vector和数组等。<br><span class="hljs-number">3.</span> C风格字符串：以空字符结束的字符数组。字符串字面值是C风格字符串，C风格字符串容易出错。<br><span class="hljs-number">4.</span> 类模板：用于创建具体类类型的模板。要想使用类模板，必须提供关于类型的辅助信息。例如要定义一个vector对象需要指定元素的类型，vector &lt;<span class="hljs-keyword">int</span>&gt; 包含<span class="hljs-keyword">int</span>类型的元素。<br><span class="hljs-number">5.</span> 编译器扩展：某个特定的编译器为cpp语言额外增加的特性。基于编译器扩展编写的程序不易移植到其它编译器上。<br><span class="hljs-number">6.</span> 容器：是一种类型，其对象容纳了一组给定类型的对象，vector是一种容器类型。<br><span class="hljs-number">7.</span> 拷贝初始化：使用赋值号（=）的初始化形式。新创建的对象是初始值的一个副本。<br><span class="hljs-number">8.</span> difference_type：由string和vector定义的一种带符号整数类型，表示两个迭代器之间的距离。<br><span class="hljs-number">9.</span> 直接初始化：不使用赋值号（=）的初始化形式。<br><span class="hljs-number">10.</span> empty：string和vector的成员。当对象的大小为<span class="hljs-number">0</span>时返回真，否则返回假。<br><span class="hljs-number">11.</span> end：string和vector的成员，返回一个尾后迭代器。也是一个标准库函数，输入一个数组，返回指向该数组尾元素下一个位置的指针。<br><span class="hljs-number">12.</span> getline：在string头文件中定义的一个函数，以一个istream对象和一个string对象为输入参数。该函数首先读取输入流的内容直到换行符停止，然后将读入的数据存入string对象，最后返回istream对象。其中换行符读入但是不保留。<br><span class="hljs-number">13.</span> 索引：是下标运算符使用的值。表示要在string对象、vector对象或者数组中访问的一个位置。<br><span class="hljs-number">14.</span> 实例化：编译器生成一个指定的模板类或函数的过程。<br><span class="hljs-number">15.</span> 迭代器：是一种类型，用于访问容器中的元素或者在元素之间移动。<br><span class="hljs-number">16.</span> 迭代器运算：是string或vector的迭代器的运算，迭代器与整数相加减得到一个新的迭代器，与原来的迭代器相比，新迭代器向前或者向后移动了若干个位置，两个迭代器相减得到了它们之间的距离，此时它们必须指向同一个容器中的元素或该容器尾元素的下一位置。<br><span class="hljs-number">17.</span> 以空字符结束的字符串：是一个字符串，它的后面还跟着一个空字符<span class="hljs-string">&#x27;\0&#x27;</span>。<br><span class="hljs-number">18.</span> 尾后迭代器：end函数返回的迭代器，指向一个并不存在的元素，该元素位于容器尾元素的下一个位置。<br><span class="hljs-number">19.</span> 指针运算：指针类型支持的算数运算。指向数组的指针所支持的运算的种类与迭代器运算一样。<br><span class="hljs-number">20.</span> <span class="hljs-keyword">ptrdiff_t</span>：是cstddef头文件中定义的一种与机器实现有关的带符号数整数类型，它的空间足够大，能表示数组中任意两个指针之间的距离。<br><span class="hljs-number">21.</span> push_back：vector对象的成员，向vector对象的末尾添加元素。<br><span class="hljs-number">22.</span> 范围<span class="hljs-keyword">for</span>语句：一种控制语句，可以在值的一个特定集合内迭代。<br><span class="hljs-number">23.</span> size：是string和vector对象的成员，分别返回字符的数量或者元素的数量。返回值的类型是size_type。<br><span class="hljs-number">24.</span> <span class="hljs-keyword">size_t</span>：是cstddef头文件中定义的一种与机器实现相关的无符号整数类型，它的空间足够大，能够表示任意数组的大小。<br><span class="hljs-number">25.</span> size_type：是string或vector定义的类型的名字，能存放下任意string或者vector对象的大小。在标准库中，size_type被定义为无符号类型。<br><span class="hljs-number">26.</span> string：一种标准库类型，表示字符的序列。<br><span class="hljs-number">27.</span> <span class="hljs-keyword">using</span>声明：令命名空间中的某个名字可以被程序直接使用。<span class="hljs-keyword">using</span> 命名空间::名字; <br><span class="hljs-number">28.</span> 值初始化：是一种初始化过程。内置类型初始化为<span class="hljs-number">0</span>，类类型由类的默认构造函数初始化。只有当类包含默认构造函数时，该类的对象才会被值初始化。对于容器的初始化来说，如果只说明了容器的大小而没有指定初始值的话，就会执行值初始化。此时编译器会生成一个值，而容器的元素被初始化为该值。<br><span class="hljs-number">29.</span> vector：是一种标准库类型，容纳某指定类型的一种元素。<br><span class="hljs-number">30.</span> ++运算符：迭代器和指针定义的递增运算符，执行“加一”操作可以使迭代器指向下一个元素。<br><span class="hljs-number">31.</span> []运算符：下标运算符返回的是一个对象。如果p是指针，n是整数，则p[n]与*(p + n)是等价的。<br><span class="hljs-number">32.</span> 箭头运算符：-&gt;，该运算符综合了解引用操作符和点操作，a-&gt;b等价于 (*a).b。<br><span class="hljs-number">33.</span> &lt;&lt;运算符：标准库类型string定义的输出运算符，负责输出string对象中的字符。<br><span class="hljs-number">34.</span> &gt;&gt;运算符：标准库类型string定义的输入运算符，负责读入一组字符，遇到空白停止，读入的内容赋给运算符右侧的运算对象，该运算对象应该是一个string对象。<br><span class="hljs-number">35.</span> ！运算符：非运算符。<br><span class="hljs-number">36.</span> &amp;&amp;运算符：与运算符。<br><span class="hljs-number">37.</span> ||运算符：或运算符。<br></code></pre></td></tr></table></figure>
+
+<h3 id="第四章"><a href="#第四章" class="headerlink" title="第四章"></a>第四章</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><ol>
+<li><p>重载运算符</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> cpp语言定义了运算符作用于内置类型和复合类型的运算对象时所执行的操作。<br><span class="hljs-bullet">2.</span> 当运算符作用于类类型的运算对象时，用户可以自定义其含义。<br><span class="hljs-bullet">3.</span> 这种自定义的过程事实上是为已存在的运算符赋予了另一层含义，所以称之为重载运算符。<br><span class="hljs-bullet">4.</span> IO库的&gt;&gt;和&lt;&lt;以及string对象、vector对象和迭代器使用的运算符都是重载的运算符。<br><span class="hljs-bullet">5.</span> 使用重载运算符时，其包括运算对象的类型和返回值的类型，都是由该运算符定义的，但是运算对象的个数、运算符的优先级和结合律都是无法改变的。<br></code></pre></td></tr></table></figure></li>
+<li><p>左值和右值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//使用关键字decltype的时候，左值和右值也有所不同</span><br><span class="hljs-comment">//如果表达式的求值结果是左值，decltype作用于该表达式（不是变量）得到一个引用类型</span><br><span class="hljs-comment">//假定p的类型是int*</span><br><span class="hljs-keyword">decltype</span>(*p); <span class="hljs-comment">//因为解引用运算符生成左值，所以decltype(*p)的结果是int&amp;</span><br><span class="hljs-comment">//因为取地址运算符生成右值，所以decltype(&amp;p)的结果是int**</span><br><span class="hljs-comment">//也就是说，结果是一个指向整型指针的指针</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="优先级和结合律"><a href="#优先级和结合律" class="headerlink" title="优先级和结合律"></a>优先级和结合律</h4><ol>
+<li><p>练习 4.1 表达式5 + 10 * 20 / 2的求值结果是多少？</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">105<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.2 根据4.12节中的表，在下述表达式的合理位置添加括号，使得添加括号后运算对象的组合顺序与添加括号前一致。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">*vec.<span class="hljs-built_in">begin</span>();<br>*vec.<span class="hljs-built_in">begin</span>() + <span class="hljs-number">1</span>;<br><span class="hljs-comment">//在本题涉及的运算符中，优先级最高的是成员选择运算符和函数调用运算符，其次是解引用运算符</span><br><span class="hljs-comment">//最后是加法运算符</span><br><span class="hljs-comment">//因此添加括号后等价的式子是：</span><br>*(vec.<span class="hljs-built_in">begin</span>());<br>(*(vec.<span class="hljs-built_in">begin</span>())) + <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="求值顺序"><a href="#求值顺序" class="headerlink" title="求值顺序"></a>求值顺序</h4><ol>
+<li><p>求值顺序、优先级、结合律</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//优先级规定了运算对象的组合方式，但是没有说明运算对象按照什么顺序求值</span><br><span class="hljs-comment">//在大多数情况下，不会明确指定求值的顺序</span><br><span class="hljs-keyword">int</span> i = <span class="hljs-built_in">f1</span>() * <span class="hljs-built_in">f2</span>();<br><span class="hljs-comment">//f1和f2一定会在执行乘法之间被调用，但是无法确定f1和f2的调用顺序</span><br><span class="hljs-comment">//对于那些没有指定执行顺序的运算符来说</span><br><span class="hljs-comment">//如果表达式指向并修改了同一个对象，将会引发错误并产生未定义的行为</span><br><span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>cout&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;++i&lt;&lt;endl;<br><span class="hljs-comment">//因为程序是未定义的，所以我们无法推断它的行为。编译器可能先求++i的值再求i的值</span><br><span class="hljs-comment">//此时输出结果就是1 1</span><br><span class="hljs-comment">//也可能先求i的值再求++i的值，输出结果就是 0 1</span><br><span class="hljs-comment">//甚至编译器还可能做完全不同的操作</span><br><span class="hljs-comment">//因为此表达式的行为不可预知，因此不论编译器生成什么样的代码程序都是错误的</span><br></code></pre></td></tr></table></figure></li>
+<li><p>四种明确规定了运算对象求值顺序的运算符</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> &amp;&amp; 逻辑与运算符<br><span class="hljs-bullet">2.</span> || 逻辑或运算符<br><span class="hljs-bullet">3.</span> ?: 三目运算符<br><span class="hljs-bullet">4.</span> , 逗号运算符<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.3 cpp语言没有明确规定大多数二元运算符的求值顺序，给编译器优化留下了余地。这种策略实际上是在代码生成效率和程序潜在缺陷之间进行了权衡，你认为这可以接受嘛？请说出你的理由。</p>
+</li>
+</ol>
+<h4 id="算数运算符"><a href="#算数运算符" class="headerlink" title="算数运算符"></a>算数运算符</h4><ol>
+<li><p>除非另作特殊说明，算数运算符都能作用于任意算数类型，以及任意能转换为算术类型的类型。</p>
+</li>
+<li><p>算数运算符的运算对象和求值结果都是右值。</p>
+</li>
+<li><p>在表达式求值之前，小整数类型的运算对象被提升成较大的整数类型，所有运算对象最终会转换成同一类型。</p>
+</li>
+<li><p>一元正号运算符、加法运算符和减法运算符都能作用于指针。</p>
+</li>
+<li><p>当一元正号运算符作用于一个指针或者算数值时，返回运算对象值的一个副本。</p>
+</li>
+<li><p>一元负号运算符</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">bool</span> b = <span class="hljs-literal">true</span>;<br><span class="hljs-keyword">bool</span> b1 = -b; <span class="hljs-comment">//b1是true</span><br><span class="hljs-comment">//对于大多数运算符来说，布尔类型的运算对象被提升为int类型。</span><br><span class="hljs-comment">//如上所示，布尔变量b的值为真，参与运算时将被提升为整数值1</span><br><span class="hljs-comment">//求负后的结果是 -1</span><br><span class="hljs-comment">//将-1再转换成布尔值，因为不为0，所以转换结果为true</span><br></code></pre></td></tr></table></figure></li>
+<li><p>除法运算中，商一律向0取整，也就是直接切除小数部分。</p>
+</li>
+<li><p>如果m%n的运算结果不为0，则它的符号和m相同。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">21</span> % <span class="hljs-number">6</span> == <span class="hljs-number">3</span>;                            <br><span class="hljs-number">21</span> % <span class="hljs-number">7</span> == <span class="hljs-number">0</span>;<br><span class="hljs-number">-21</span> % <span class="hljs-number">-8</span> == <span class="hljs-number">-5</span>;<br><span class="hljs-number">21</span> % <span class="hljs-number">-5</span> == <span class="hljs-number">1</span>;<br><span class="hljs-number">21</span> / <span class="hljs-number">6</span> == <span class="hljs-number">3</span>;<br><span class="hljs-number">21</span> / <span class="hljs-number">7</span> == <span class="hljs-number">3</span>;<br><span class="hljs-number">-21</span> / <span class="hljs-number">-8</span> == <span class="hljs-number">2</span>;<br><span class="hljs-number">21</span> / <span class="hljs-number">-5</span> == <span class="hljs-number">-4</span>;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习4.4 加括号，说明其求值的过程以及最终的结果。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">12</span> / <span class="hljs-number">3</span> * <span class="hljs-number">4</span> + <span class="hljs-number">5</span> * <span class="hljs-number">15</span> + <span class="hljs-number">24</span> % <span class="hljs-number">4</span> / <span class="hljs-number">2</span> == <span class="hljs-number">91</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习4.5 写出下列表达式的求值结果</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">(a) <span class="hljs-number">-30</span> * <span class="hljs-number">3</span> + <span class="hljs-number">21</span> / <span class="hljs-number">5</span> == <span class="hljs-number">-86</span><br>(b) <span class="hljs-number">-30</span> + <span class="hljs-number">3</span> * <span class="hljs-number">21</span> / <span class="hljs-number">5</span> == <span class="hljs-number">-18</span><br>(c) <span class="hljs-number">30</span> / <span class="hljs-number">3</span> * <span class="hljs-number">21</span> / <span class="hljs-number">5</span> == <span class="hljs-number">0</span><br>(d) <span class="hljs-number">-30</span> / <span class="hljs-number">3</span> * <span class="hljs-number">21</span> % <span class="hljs-number">4</span> == <span class="hljs-number">-2</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习4.6 写出一条表达式用于确定一个整数是奇数还是偶数。</p>
+</li>
+<li><p>练习4.7 溢出是何含义？ 写出三条导致溢出的表达式。</p>
+</li>
+</ol>
+<h4 id="逻辑和关系运算符"><a href="#逻辑和关系运算符" class="headerlink" title="逻辑和关系运算符"></a>逻辑和关系运算符</h4><ol>
+<li><p>短路求值：逻辑与和逻辑或运算符都是先求左侧运算对象的值再求右侧运算对象的值，当且仅当左侧运算对象无法确定表达式的结果时才会计算右侧运算对象的值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//使用逻辑或的例子</span><br><span class="hljs-comment">//假定有一个存储若干string对象的vector对象</span><br><span class="hljs-comment">//要求输出string对象的内容</span><br><span class="hljs-comment">//在遇到空字符串或者以句号结束的字符串时进行转换</span><br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">const</span> <span class="hljs-keyword">auto</span> &amp;s : text)&#123;<br>    cout&lt;&lt;s;<br>    <span class="hljs-keyword">if</span>(s.<span class="hljs-built_in">empty</span>() || s[<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>] == <span class="hljs-string">&quot;.&quot;</span>)&#123;<br>        cout&lt;&lt;endl;<br>    &#125;<span class="hljs-keyword">else</span>&#123;<br>        cout&lt;&lt;<span class="hljs-string">&quot; &quot;</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//值得注意的是</span><br><span class="hljs-comment">//s被声明成了对常量的引用</span><br><span class="hljs-comment">//因为text的元素是string对象，可能非常大，所以将s声明成引用类型可以避免对元素的拷贝</span><br><span class="hljs-comment">//又因为不需要对string对象做写操作</span><br><span class="hljs-comment">//所以s被声明成对常量的引用</span><br></code></pre></td></tr></table></figure></li>
+<li><p>在进行比较运算的时候除非比较的对象是布尔类型，否则不要使用布尔字面值true和false作为运算对象：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span>(val == <span class="hljs-literal">true</span>)&#123;<br>    <br>&#125;<br><span class="hljs-comment">//如果val不是布尔值，那么进行比较之前会把true转换成val的类型</span><br><span class="hljs-comment">//假设val是int类型的</span><br><span class="hljs-comment">//上述式子等价于</span><br><span class="hljs-keyword">if</span>(val == <span class="hljs-number">1</span>)&#123;<br>    <br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习4.8 说明逻辑与、逻辑或和相等性运算符中运算对象求值的顺序。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//逻辑与和逻辑或运算符：短路求值</span><br><span class="hljs-comment">//相等性运算符：两个运算对象都要求值，cpp没有规定其求值的顺序。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习4.9 解释在下面的if语句中条件判断的过程。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *cp = <span class="hljs-string">&quot;Hello World&quot;</span>;<br><span class="hljs-keyword">if</span>(cp &amp;&amp; *cp)&#123;<br>    <span class="hljs-comment">/**/</span><br>&#125;<br><span class="hljs-comment">//cp是指向字符串的指针</span><br><span class="hljs-comment">//因此上式的条件部分含义是首先检查指针cp是否有效</span><br><span class="hljs-comment">//如果cp为空指针或者无效指针，则条件不满足</span><br><span class="hljs-comment">//如果cp有效，即cp指向了内存中的某个有效地址</span><br><span class="hljs-comment">//继续解引用指针cp并检查cp所指的对象是否为空字符串&#x27;\0&#x27;</span><br><span class="hljs-comment">//如果cp所指的对象不是空字符串则条件满足，否则不满足</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习4.10 为while循环写一个条件，使其从标准输入中读取整数，遇到42时停止。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">while</span>(cin &gt;&gt; num &amp;&amp; num != <span class="hljs-number">42</span>)&#123;<br>    <span class="hljs-comment">/**/</span><br>&#125;<br><span class="hljs-comment">//首先检查输入流数据是否正常，然后判断当前读入的数字是否是42</span><br><span class="hljs-comment">//遇到42则条件不满足，退出循环</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习4.11 书写一条表达式用于测试a，b，c和d的关系，确保a大于b，b大于c，c大于d。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp">a &gt; b &amp;&amp; b &gt; c &amp;&amp; c &gt; d<br></code></pre></td></tr></table></figure></li>
+<li><p>练习4.12 假设i，j和k是三个 整数，说明下述表达式的含义。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">i != k &lt; j;<br><span class="hljs-comment">//cpp规定 &lt; &lt;= &gt; &gt;=的优先级高于==和!=</span><br><span class="hljs-comment">//因此上式的求值过程等同于 i != (k &lt; j)</span><br><span class="hljs-comment">//意即先比较j和k的大小，然后得到一个布尔值，最后判断i的值和这个布尔值是否相等</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><ol>
+<li><p>赋值运算的结果是它的左侧运算对象，并且是一个左值。相应的，结果的类型就是左侧运算对象的类型。如果赋值运算符的左右两个运算对象类型不同，则右侧的运算对象将转换成左侧运算对象的类型。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> k = <span class="hljs-number">0</span>;<br>k = <span class="hljs-number">1</span>; <span class="hljs-comment">//结果，类型是int，值为1</span><br>k = <span class="hljs-number">3.14</span>;<span class="hljs-comment">//结果，类型是int，值为3</span><br></code></pre></td></tr></table></figure></li>
+<li><p>cpp11允许使用花括号括起来的初始值列表作为赋值语句的右侧运算对象：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp">k = &#123;<span class="hljs-number">3.14</span>&#125;; <span class="hljs-comment">//错误，窄化运算</span><br>vector&lt;<span class="hljs-keyword">int</span>&gt; v1; <span class="hljs-comment">//初始为空</span><br>v1 = &#123;<span class="hljs-number">0</span> ,<span class="hljs-number">1</span> ,<span class="hljs-number">2</span> ,<span class="hljs-number">3</span> ,<span class="hljs-number">4</span> ,<span class="hljs-number">5</span> ,<span class="hljs-number">6</span> ,<span class="hljs-number">7</span> ,<span class="hljs-number">8</span> ,<span class="hljs-number">9</span>&#125;;<br><span class="hljs-comment">//如果左侧运算对象是内置类型，那么初始值列表最多只能包含一个值</span><br><span class="hljs-comment">//而且该值即使转换，其所占的空间也不应该大于目标类型的空间</span><br><span class="hljs-comment">//对于类类型来说，赋值运算的细节由类本身决定。</span><br><span class="hljs-comment">//对于vector来说，vector模板重载了赋值运算符并且可以接收初始值列表</span><br><span class="hljs-comment">//当赋值发生时，用右侧运算对象的元素替换左侧运算对象的元素</span><br></code></pre></td></tr></table></figure></li>
+<li><p>赋值运算符满足右结合律。对于多重赋值语句中的每一个对象，它的类型或者与右边对象的类型相同、或者可由右边对象的类型转换得到。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> ival, *pval;<br>ival = pval = <span class="hljs-number">0</span>; <span class="hljs-comment">//错误，不能把指针的值赋给int</span><br>string s1, s2;<br>s1 = s2 = <span class="hljs-string">&quot;ok&quot;</span>； <span class="hljs-comment">//字符串字面值转换成&quot;ok&quot;；</span><br></code></pre></td></tr></table></figure></li>
+<li><p>赋值运算符的优先级低于关系运算符的优先级，所以在条件语句中，赋值部分通常应该加上括号。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">while</span>((i = <span class="hljs-built_in">get_value</span>()) != <span class="hljs-number">42</span>)&#123;<br>    <span class="hljs-comment">//处理过程是首先将get_value函数的返回值赋给i，然后比较i和42是否相等</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.13 在下列语句中，完成赋值后i和d的值分别都是多少？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> i;<br><span class="hljs-keyword">double</span> d;<br>d = i = <span class="hljs-number">3.5</span>;<br>i = d = <span class="hljs-number">3.5</span>;<br><span class="hljs-comment">//赋值运算符左右两个运算对象的类型不同，则右侧运算对象转换成左侧运算对象的类型</span><br><span class="hljs-comment">//赋值运算符满足右结合律</span><br><span class="hljs-comment">//第一个式子的含义是先把3.5赋给整数i</span><br><span class="hljs-comment">//此时发生了自动类型转换，小数部分被舍弃，i的值为3</span><br><span class="hljs-comment">//接着i的值再赋给双精度浮点数d，所以d的值也是3.0</span><br><span class="hljs-comment">//第二个式子的含义是先把3.5赋值给双精度浮点数d，因此d的值是3.5</span><br><span class="hljs-comment">//接着d的值再赋给整数i</span><br><span class="hljs-comment">//此时发生了自动类型转换，小数部分被舍弃，i的值为3</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.14 执行下述if语句后将发生什么情况</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span>(<span class="hljs-number">42</span> = i)&#123;<br>    <span class="hljs-comment">/**/</span><br>&#125;<br><span class="hljs-comment">//编译错误，赋值运算符的左侧必须是左值</span><br><span class="hljs-comment">//字面值常量42显然不是左值，不能作为左侧运算对象</span><br><span class="hljs-keyword">if</span>(i = <span class="hljs-number">42</span>)&#123;<br>    <span class="hljs-comment">//从语法上来说是正确的</span><br>    <span class="hljs-comment">//但是 i = 42 的返回值是42，所以条件永远为真</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.15 下面的赋值是非法的，为什么？应该如何修改？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">double</span> dval;<br><span class="hljs-keyword">int</span> ival;<br><span class="hljs-keyword">int</span> *pi;<br>dval = ival = pi = <span class="hljs-number">0</span>;<br><span class="hljs-comment">//pi = 0表示pi是一个空指针</span><br><span class="hljs-comment">//ival = pi试图把整型指针的值赋给整数，这是不符合语法规范的操作，无法编译通过</span><br><span class="hljs-comment">//把上述程序改成合法的情况如下</span><br><span class="hljs-keyword">double</span> dval;<br><span class="hljs-keyword">int</span> ival;<br><span class="hljs-keyword">int</span> *pi;<br>dval = ival = <span class="hljs-number">0</span>;<br>pi = <span class="hljs-number">0</span>;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.16 尽管下面的语句合法，但是它们实际执行的行为可能和预期并不一样，为什么？应该如何修改？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span>(p = <span class="hljs-built_in">getPtr</span>() != <span class="hljs-number">0</span>)&#123;<br>    <br>&#125;<br><span class="hljs-comment">//修改为</span><br><span class="hljs-keyword">if</span>((p = <span class="hljs-built_in">getPtr</span>()) != <span class="hljs-number">0</span>)&#123;<br>    <span class="hljs-comment">//原意是判断是否是一个空指针</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="递增和递减运算符"><a href="#递增和递减运算符" class="headerlink" title="递增和递减运算符"></a>递增和递减运算符</h4><ol>
+<li><p>很多迭代器不支持算数运算，所以有些时候递增运算符和递减运算符是必须的。</p>
+</li>
+<li><p>递增运算符和递减运算符的前置版本和后置版本。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 这两种运算符必须作用于左值运算对象。<br><span class="hljs-bullet">2.</span> 前置版本将对象本身作为左值返回，后置版本则将对象原始值的副本作为右值返回。<br><span class="hljs-bullet">3.</span> 建议：出于性能的考虑，除非必须，否则不用递增递减运算符的后置版本。<br></code></pre></td></tr></table></figure></li>
+<li><p>在一条语句中混用解引用操作符和递增运算符</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">auto</span> pbeg = v.<span class="hljs-built_in">begin</span>();<br><span class="hljs-keyword">while</span>(pbeg != v.<span class="hljs-built_in">end</span>() &amp;&amp; *pbeg &gt;= <span class="hljs-number">0</span>)&#123;<br>    cout&lt;&lt; *pbeg++ &lt;&lt;endl;<br>&#125;<br><span class="hljs-comment">//后置运算符的优先级高于解引用运算符，因此*pbeg++等价于 *(pbeg++)</span><br></code></pre></td></tr></table></figure></li>
+<li><p>运算对象可按照任意顺序求值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//如果一条子表达式改变了某个运算对象的值，另一条子表达式又要使用该值的话</span><br><span class="hljs-comment">//运算对象的求值顺序会变的非常关键</span><br><span class="hljs-comment">//递增运算符和递减运算符会改变运算对象的值所，所以要提防在复合表达式中错用这两个运算符</span><br><span class="hljs-comment">//下面这个循环就是一个错误的示例</span><br><span class="hljs-keyword">while</span>(beg != s.<span class="hljs-built_in">end</span>() &amp;&amp; !<span class="hljs-built_in">isspace</span>(*beg))&#123;<br>    *beg = <span class="hljs-built_in">toupper</span>(*beg++); <span class="hljs-comment">//错误，该赋值语句未定义</span><br>&#125;<br><span class="hljs-comment">//问题在于：赋值运算符左右两端的运算对象都用到了beg</span><br><span class="hljs-comment">//并且右侧的运算对象还改变了beg的值，所以该赋值语句是未定义的</span><br><span class="hljs-comment">//编译器可能按照下面的任意一种思路处理该表达式</span><br>*beg = <span class="hljs-built_in">toupper</span>(*beg); <span class="hljs-comment">//如果先求左侧的值</span><br>*(beg + <span class="hljs-number">1</span>) = <span class="hljs-built_in">toupper</span>(*beg) <span class="hljs-comment">//如果先求右侧的值</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.17 说明前置递增运算符的区别和后置递增运算符的区别。</p>
+</li>
+<li><p>练习 4.18 如果第132页那个输出vector对象元素的while循环使用前置递增运算符，将得到什么结果。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//如果这样做了，将会产生两个错误</span><br><span class="hljs-comment">//一是无法输出vector对象的第一个元素</span><br><span class="hljs-comment">//二是当所有元素都不为负时，移动到最后一个元素的地方</span><br><span class="hljs-comment">//程序试图继续向前移动迭代器并且解引用一个根本不存在的元素</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.19 假设ptr的类型是指向int的指针、vec的类型是vector&lt; int &gt;、ival的类型是int，说明下列表达式是何含义？如果有表达式不正确，为什么？应该如何修改？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp">(a)ptr != <span class="hljs-number">0</span> &amp;&amp; *ptr++;<br><span class="hljs-comment">//(a)的含义时先判断指针ptr是否为空</span><br><span class="hljs-comment">//如果不为空，继续判断指针ptr所指的整数是否为0</span><br><span class="hljs-comment">//最后指针ptr向右移动一位</span><br>(b)ival++ &amp;&amp; ival;<br><span class="hljs-comment">//先判断ival是否为0</span><br><span class="hljs-comment">//再判断ival + 1是否为0</span><br>(c)vec[ival++] &lt;= vac[ival];<br><span class="hljs-comment">//这是一种未定义的情况</span><br><span class="hljs-comment">//如果先算左边 vec[ival] &lt;= vec[ival + 1]</span><br><span class="hljs-comment">//如果先算右边 vec[ival] &lt;= vec[ival];</span><br><span class="hljs-comment">//程序可能出现未定义的行为</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="成员访问运算符"><a href="#成员访问运算符" class="headerlink" title="成员访问运算符"></a>成员访问运算符</h4><ol>
+<li><p>点运算符和箭头运算符都可以用于访问成员，其中，点运算符用于获取类对象的一个成员；箭头运算符与点运算符有关，表达式ptr-&gt;mem等价于(*ptr).mem。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string s1 = <span class="hljs-string">&quot;a string&quot;</span>, *p = &amp;s1;<br><span class="hljs-keyword">auto</span> n = si.<span class="hljs-built_in">size</span>();<br>n = (*p).<span class="hljs-built_in">size</span>(); <span class="hljs-comment">//运行p所指对象的size成员</span><br>n = p-&gt;<span class="hljs-built_in">size</span>(); <span class="hljs-comment">//等价于(*p).size()</span><br></code></pre></td></tr></table></figure></li>
+<li><p>解引用运算符的优先级低于点运算符。</p>
+</li>
+<li><p>箭头运算符作用于一个指针类型的运算对象，结果是一个左值。</p>
+</li>
+<li><p>点运算符分为两种情况：如果成员所属对象是左值，那么结果是左值；反之，如果成员所属的对象是右值，那么结果是右值。</p>
+</li>
+<li><p>练习 4.20 假设iter的类型是 vector&lt; string &gt;::iterator，说明下面的表达式是否合法。如果合法，表达式的含义是什么？如果不合法，错在何处？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp">(a)*iter++;<br><span class="hljs-comment">//合法的，后置递增运算符的优先级高于解引用运算符；</span><br><span class="hljs-comment">//其含义是，解引用当前迭代器所处位置的内容，然后把迭代器的内容向后移动一位。</span><br>(b)(*iter)++;<br><span class="hljs-comment">//非法的，解引用iter是一个string对象</span><br><span class="hljs-comment">//string对象不支持递增运算符</span><br>(c)*iter.<span class="hljs-built_in">empty</span>();<br><span class="hljs-comment">//非法的，点运算符的优先级高于解引用运算符</span><br>(d)iter-&gt;<span class="hljs-built_in">empty</span>();<br><span class="hljs-comment">//合法的，等价于(*iter).empty()</span><br>(e)++*iter;<br><span class="hljs-comment">//非法的，string没有前置递增操作</span><br>(f)iter++-&gt;<span class="hljs-built_in">empty</span>();<br><span class="hljs-comment">//合法的，(*iter++).empty()</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="条件运算符"><a href="#条件运算符" class="headerlink" title="条件运算符"></a>条件运算符</h4><ol>
+<li><p>cond ? expr1 : expr2</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//cond是判断条件的表达式。</span><br><span class="hljs-comment">//expr1和expr2是两个类型相同或者可以转换成为某个公共类型的表达式。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>当条件运算符的两个表达式都是左值或者能转换成同一左值类型的时候，运算的结果是左值，否则运算的结果是右值。</p>
+</li>
+<li><p>练习 4.21 编写一段程序，使用条件运算符从vector&lt; int &gt;中找到哪些元素是奇数，然后将这些奇数值翻倍。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	vector&lt;<span class="hljs-keyword">int</span>&gt; vInt;<br>	<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> sz = <span class="hljs-number">10</span>; <span class="hljs-comment">//sz是向量的维度</span><br>	<span class="hljs-built_in">srand</span>((<span class="hljs-keyword">unsigned</span>)<span class="hljs-built_in">time</span>(<span class="hljs-literal">NULL</span>));<br>	cout &lt;&lt; <span class="hljs-string">&quot;数组的初始值是：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; sz; i++) &#123;<br>		vInt.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">rand</span>() % <span class="hljs-number">10</span>);<br>		cout &lt;&lt; vInt[i] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>	&#125;<br>	cout &lt;&lt; endl;<br>	<span class="hljs-comment">//使用范围for循环把数组中的奇数翻倍</span><br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">auto</span>&amp; val : vInt) &#123;<br>		val = (val % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>) ? val * <span class="hljs-number">2</span> : val;<br>	&#125;<br>	cout &lt;&lt; <span class="hljs-string">&quot;处理后数组的值为：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; sz; i++) &#123;<br>		cout &lt;&lt; vInt[i] &lt;&lt; <span class="hljs-string">&quot; &quot;</span>;<br>	&#125;<br>	cout &lt;&lt; endl;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.22  本节的示例程序将成绩划分为high pass、pass和fail三种，扩展该程序使其进一步将60分到75分之间的成绩设定为low pass。要求程序包含两个版本，一个版本只使用条件运算符；另一个版本使用1个或者多个if语句。哪个版本的程序更容易理解呢？为什么？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//在这里只写用条件运算符的实现方法</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	string finalgrade;<br>	<span class="hljs-keyword">int</span> grade;<br>	cout &lt;&lt; <span class="hljs-string">&quot;请输入您要检查的成绩：&quot;</span> &lt;&lt; endl;<br>	<span class="hljs-comment">//确保输入的成绩合法</span><br>	<span class="hljs-keyword">while</span> (cin &gt;&gt; grade &amp;&amp; grade &gt;= <span class="hljs-number">0</span> &amp;&amp; grade &lt;= <span class="hljs-number">100</span>) &#123;<br>		finalgrade = (grade &gt; <span class="hljs-number">90</span>) ? <span class="hljs-string">&quot;high pass&quot;</span> :<br>			(grade &gt; <span class="hljs-number">75</span>) ? <span class="hljs-string">&quot;pass&quot;</span> :<br>			(grade &gt; <span class="hljs-number">60</span>) ? <span class="hljs-string">&quot;low pass&quot;</span> : <span class="hljs-string">&quot;fail&quot;</span>;<br>		cout &lt;&lt; finalgrade &lt;&lt; endl;<br>		cout &lt;&lt; <span class="hljs-string">&quot;请输入您要检查的成绩：&quot;</span> &lt;&lt; endl;<br>	&#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.23 因为运算符的优先级问题，下面这条表达式无法通过编译。根据4.12节中的表指出它的问题在哪里？应该如何修改？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">string s = <span class="hljs-string">&quot;word&quot;</span>;<br>string p1 = s + s[s.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;s&#x27;</span> ? <span class="hljs-string">&quot;&quot;</span> : <span class="hljs-string">&quot;s&quot;</span>;<br><span class="hljs-comment">//几个运算符的优先级从高到低分别是 加法运算符 相等运算符 条件运算符和赋值运算符</span><br><span class="hljs-comment">//因此式子的求值过程是先把s和s[s.size() - 1]相加得到一个新字符串，然后该字符串与字符&#x27;s&#x27;比较是否相等</span><br><span class="hljs-comment">//这是一个非法操作，并且与程序的原意不服</span><br><span class="hljs-comment">//经过修改之后的语句为</span><br>string p1 = s + (s[s.<span class="hljs-built_in">size</span>() - <span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;s&#x27;</span> ? <span class="hljs-string">&quot;&quot;</span> : <span class="hljs-string">&quot;s&quot;</span>);<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.24 本节是示例程序将程序划分为high pass、pass和fail三种，它的依据是条件运算符满足右结合律。假设条件运算符满足的是左结合律，求值过程该是怎样的？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//原文的程序如下</span><br>finalgrade = (grade &gt; <span class="hljs-number">90</span>) ? <span class="hljs-string">&quot;high pass&quot;</span> <br>    					: (grade &lt; <span class="hljs-number">60</span>) ? <span class="hljs-string">&quot;fail&quot;</span> : <span class="hljs-string">&quot;pass&quot;</span>;<br><span class="hljs-comment">//如果满足左结合率，该式等价于：</span><br>finalgrade = ((grade &gt; <span class="hljs-number">90</span>) ? <span class="hljs-string">&quot;high pass&quot;</span> : (grade &lt; <span class="hljs-number">60</span>)) <br>			? <span class="hljs-string">&quot;fail&quot;</span> : <span class="hljs-string">&quot;pass&quot;</span>;<br><span class="hljs-comment">//先考察grade &gt; 90是否成立，</span><br><span class="hljs-comment">//如果成立，第一个条件表达式的值为 &quot;high pass&quot;</span><br><span class="hljs-comment">//如果不成立，第一个条件表达式的值为(grade &lt; 60)</span><br><span class="hljs-comment">//这条语句是无法编译通过的，因为条件运算符要求两个结果表达式的类型相同或者可以相互转化</span><br><span class="hljs-comment">//即使语法上通过，也就是说，第一个条件表达式求值的结果分为三种</span><br><span class="hljs-comment">//分别是high pass, 1, 0</span><br><span class="hljs-comment">//接下来根据第一个条件表达式的结果求解第二个条件表达式</span><br><span class="hljs-comment">//求值结果应该是&quot;fail&quot;或&quot;pass&quot;，上述求值结果显然是与我们的期望不符的</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h4><ol>
+<li><p>位运算符作用于整数类型的运算对象，并且把运算对象看成是二进制位的集合。位运算符提供检查和设置二进制位的功能。</p>
+</li>
+<li><p>一种名为bigset的标准库类型也可以表示任意大小的二进制位的集合，所以位运算符同样能作用于bigset类型。</p>
+</li>
+<li><p>一般来说，如果运算对象是‘小整型’，则它的值会被自动提升为较大的整数类型。</p>
+</li>
+<li><p>运算对象可以是有符号数，也可以是无符号数。如果运算对象是有符号数并且它的值为负，位运算符如何处理符号位依赖于机器，此时的左移操作可能会改变符号位的值，因此是一种未定义的操作。所以强烈建议仅将位运算符用于处理无符号类型。</p>
+</li>
+<li><p>一个使用位运算符的例子：假设班级中有30个学生，老师每周都会对学生进行一次小测验，测验的结果只有通过和不通过两种。为了更好的追踪测验的结果，用一个二进制位代表某个学生在一次测验中是否通过。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//显然全班的测验结果可以用一个无符号整数来表示</span><br><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> quiz1 = <span class="hljs-number">0</span>; <span class="hljs-comment">//quiz1的类型是unsigned long，在任何机器上都至少有32位</span><br><span class="hljs-comment">//使用左移运算符和一个unsigned long类型的整数字面值1就能得到一个表示某学生通过的数值</span><br><span class="hljs-number">1UL</span> &lt;&lt; n; <span class="hljs-comment">//生成一个值，该值只有第n位为1</span><br>quiz1 |= <span class="hljs-number">1UL</span> &lt;&lt; <span class="hljs-number">27</span>; <span class="hljs-comment">//表示学生27通过了测验 </span><br><span class="hljs-comment">//如果核查的时候发现学生27其实并没有通过测验</span><br>quiz1 &amp;= ~( <span class="hljs-number">1UL</span> &lt;&lt; <span class="hljs-number">27</span>);<br><span class="hljs-comment">//试图检查学生27究竟有没有通过测验</span><br><span class="hljs-keyword">bool</span> status = quiz1 &amp; (<span class="hljs-number">1UL</span> &lt;&lt; <span class="hljs-number">27</span>);<br></code></pre></td></tr></table></figure></li>
+<li><p>移位运算符满足左结合率。</p>
+</li>
+<li><p>练习 4.25 如果一台机器上int占32位，char占8位，用的是Latin-1字符集，其中字符’q’的形式是01110001，那么表达式 ~’q’ &lt;&lt; 6的值是什么？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//在位运算符中，运算符~的优先级高于移位运算符</span><br><span class="hljs-comment">//因为位运算符作用的运算对象应该是整数类型，所以字符q首先转换为整数类型</span><br><span class="hljs-comment">//转化的结果是00000000 00000000 00000000 01110001</span><br><span class="hljs-comment">//取反的结果是11111111 11111111 11111111 10001110</span><br><span class="hljs-comment">//移位的结果是11111111 11111111 11100011 10000000</span><br><span class="hljs-comment">//cpp规定整数按照补码形式存储，对上式求补，即最终结果的二进制形式，转换成十进制是-7296</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.26 在本节关于测验成绩的例子中，如果使用unsigned int作为quiz1的类型会发生什么情况？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//cpp规定unsigned int所占空间的最小值是16</span><br><span class="hljs-comment">//所以在很多机器类型中，该数据类型不足以存放全部学生的信息</span><br><span class="hljs-comment">//从而造成了信息丢失</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.27 下列表达式的结果是什么？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> ul1 = <span class="hljs-number">3</span>, ul2 = <span class="hljs-number">7</span>;<br>(<span class="hljs-number">1</span>) ul1 &amp; ul2; <span class="hljs-comment">//3</span><br>(<span class="hljs-number">2</span>) ul1 | ul2; <span class="hljs-comment">//7</span><br>(<span class="hljs-number">3</span>) ul1 &amp;&amp; ul2; <span class="hljs-comment">//1，结果为true</span><br>(<span class="hljs-number">4</span>) ul1 || ul2; <span class="hljs-comment">//1，结果为true</span><br><span class="hljs-comment">//ul1 00000000 00000000 00000000 00000011</span><br><span class="hljs-comment">//ul2 00000000 00000000 00000000 00000111</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="sizeof运算符"><a href="#sizeof运算符" class="headerlink" title="sizeof运算符"></a>sizeof运算符</h4><ol>
+<li><p>sizeof运算符返回一条表达式或者一个类型所占的字节数。sizeof并不实际计算其运算对象的值。</p>
+</li>
+<li><p>sizeof运算符满足右结合率，其所得的值是一个size_t类型的常量表达式。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//运算符的运算对象有两种形式</span><br><span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span> (type)<br><span class="hljs-keyword">sizeof</span> expr<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp">Sales_data data, *p;<br><span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(Sales_data);  <span class="hljs-comment">//存储对应类型的对象所占的空间大小</span><br><span class="hljs-keyword">sizeof</span> data;         <span class="hljs-comment">//和上面的语句等价</span><br><span class="hljs-keyword">sizeof</span> p;            <span class="hljs-comment">//指针所占的空间的大小</span><br><span class="hljs-keyword">sizeof</span> *p;           <span class="hljs-comment">//p所指对象所占的空间的大小</span><br><span class="hljs-keyword">sizeof</span> Sales_data.revenue;   <span class="hljs-comment">//Sales_data的revenue成员对应类型的大小</span><br><span class="hljs-keyword">sizeof</span> Sales_data::revenue;  <span class="hljs-comment">//和上一句代码等价</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//详解sizeof *p</span><br><span class="hljs-comment">//sizeof满足右结合律并且和*运算符的优先级是一致的</span><br><span class="hljs-comment">//所以表达式按照从右向左的顺序组合，所以，上式等价于</span><br><span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(*p);<br><span class="hljs-comment">//因为sizeof不会实际求运算对象的值</span><br><span class="hljs-comment">//所以即使p是一个无效，即未初始化的指针，也不会有什么影响</span><br><span class="hljs-comment">//sizeof的运算对象中解引用一个无效指针仍然是一种安全的行为，因为指针实际上并没有真正被用到</span><br><span class="hljs-comment">//sizeof不需要真的解引用指针也能知道他所指对象的类型</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">int</span>* p;<br>	cout &lt;&lt; <span class="hljs-keyword">sizeof</span> * p &lt;&lt; endl; <br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>cpp11新标准允许使用作用域运算符来获取类成员的大小。通常情况下只有通过类的对象才能访问到类的成员，但是sizeof运算符无须我们提供一个具体的对象，因为要想知道类成员的大小无须真的获取该成员。</p>
+</li>
+<li><p>sizeof运算符的结果部分地依赖于其作用的类型：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 对char或者类型为char的表达式执行sizeof运算，结果为1。<br><span class="hljs-bullet">2.</span> 对引用类型执行sizeof运算得到被引用对象所占空间的大小。<br><span class="hljs-bullet">3.</span> 对解引用指针执行sizeof运算得到指针指向的对象所占空间的大小，指针不需要有效。<br><span class="hljs-bullet">4.</span> 对数组执行sizeof运算得到整个数组所占空间的大小，等价于对数组中所有元素各执行一次sizeof运算并将所得结果求和。注意，sizeof不会把数组名转换成指针处理。<br><span class="hljs-bullet">5.</span> 对string对象或vector对象执行sizeof运算只返回该类型固定部分的大小，不会计算对象中的元素占用了多少空间。<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//sizeof(ia) / sizeof(*ia) 返回ia元素的数量</span><br><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">size_t</span> sz = <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(ia) / <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(*ia);<br><span class="hljs-keyword">int</span> arr2[sz];<span class="hljs-comment">// 正确，sizeof返回一个常量表达式</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.28 编写一段程序，输出每种内置类型所占的空间的大小。</p>
+</li>
+<li><p>练习 4.29 推断下面代码的输出结果并说明理由。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> x[<span class="hljs-number">10</span>];<br><span class="hljs-keyword">int</span> *p = x;<br>cout &lt;&lt; <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(x) / <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(*x)&lt;&lt;endl; <span class="hljs-comment">//10，经典的求数组元素个数的方法</span><br>cout &lt;&lt; <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(p) / <span class="hljs-built_in"><span class="hljs-keyword">sizeof</span></span>(*p)&lt;&lt;endl;<br><span class="hljs-comment">//sizeof(p)，p是一个指针，求值结果是指针所占空间的大小</span><br><span class="hljs-comment">//sizeof(*p)的运算对象*p是指针p所指的对象，即int变量x，所以求值结果是int值所占空间的大小</span><br><span class="hljs-comment">//int占4字节，指针占4字节，所以第二条语句的结果为1</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.30 在下述表达式的适当位置加上括号，使得加上括号之后的表达式与原来的含义相同。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//sizeof的优先级高于加法运算符的优先级</span><br><span class="hljs-comment">//所以该条语句的含义是先求x所占空间的大小然后与y相加</span><br>(<span class="hljs-number">1</span>)<span class="hljs-keyword">sizeof</span> x + y; <span class="hljs-comment">//(sizeof x) + y;</span><br><span class="hljs-comment">//成员选择运算符的优先级高于sizeof的优先级，所以本例无须添加括号</span><br>(<span class="hljs-number">2</span>)<span class="hljs-keyword">sizeof</span> p-&gt;mem[i];<br><span class="hljs-comment">//sizeof的优先级高于关系运算符的优先级</span><br>(<span class="hljs-number">3</span>)<span class="hljs-keyword">sizeof</span> a &lt; b;<br><span class="hljs-comment">//函数调用运算符的优先级高于sizeof优先级，所以无须添加括号</span><br>(<span class="hljs-number">4</span>)<span class="hljs-function"><span class="hljs-keyword">sizeof</span> <span class="hljs-title">f</span><span class="hljs-params">()</span></span>;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="逗号运算符"><a href="#逗号运算符" class="headerlink" title="逗号运算符"></a>逗号运算符</h4><ol>
+<li><p>逗号运算符规定了运算对象的求值顺序。</p>
+</li>
+<li><p>练习 4.31 本节的程序使用了前置版本递增运算符和递减运算符，解释为什么要使用前置版本而不是后置版本。要想使用后置版本的递增递减运算符需要做哪些改动？使用后置版本重写本节的程序。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//本题从程序运行结果来说，使用前置版本和后置版本是一样的</span><br><span class="hljs-comment">//因为递增运算符和递减运算符与真正使用这两个变量的语句位于不同的表达式中</span><br><span class="hljs-comment">//但是出于性能方面的考虑，后置版本需要将原始值存储下来以便于返回这个未修改的内容</span><br><span class="hljs-comment">//如果不需要修改之前的值，那么后置版本的操作就是一种浪费</span><br><span class="hljs-comment">//综上，就本题而言，前置版本是更好的选择</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.32 解释下面这个循环的含义。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">constexpr</span> <span class="hljs-keyword">int</span> size = <span class="hljs-number">5</span>;<br><span class="hljs-keyword">int</span> ia[size] = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> *ptr = ia, ix = <span class="hljs-number">0</span>; ix != size &amp;&amp; ptr != ia + size; ++ix, ++ptr)&#123;<br>    <span class="hljs-comment">//</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习 4.33 根据4.12节中的表，说明下面这条表达式的含义。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp">someValue ? ++x, ++y : --x, --y;<br><span class="hljs-comment">//cpp规定条件运算符优先级高于逗号运算符</span><br><span class="hljs-comment">//所以someValue ? ++x, ++y : --x, --y等价于(someValue ? ++x, ++y : --x), --y</span><br><span class="hljs-comment">//如果someValue为真，则执行 ++x ++y --y</span><br><span class="hljs-comment">//如果someValue为假，则执行 --x --y</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id=""><a href="#" class="headerlink" title=""></a></h4></li>
+</ol>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/cpp-primer-6-40/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">cpp_primer_6_40</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/cpp-primer-4-40/">
+                        <span class="hidden-mobile">cpp_primer_4_40</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      jQuery('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      jQuery('#modalSearch').on('shown.bs.modal', function() {
+        jQuery('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

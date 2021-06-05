@@ -1,0 +1,736 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="cpp_primer的读书笔记第一篇
+主要内容包括变量、复合类型、const限定符">
+  <meta name="author" content="Xie yue">
+  <meta name="keywords" content="">
+  
+  <title>cpp_primer_1_40 - 大树洞！</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="大树洞！" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>山丘与树洞</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="cpp_primer_1_40">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-05-21 15:11" pubdate>
+        2021年5月21日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      100
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">cpp_primer_1_40</h1>
+            
+            <div class="markdown-body">
+              <p>cpp_primer的读书笔记第一篇</p>
+<p>主要内容包括变量、复合类型、const限定符</p>
+<span id="more"></span>
+
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><ol>
+<li><p>当在程序的某处我们使用了一种类型而其实对象应该取另一种类型的时候，程序会自动进行类型转换。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-keyword">bool</span> b = <span class="hljs-number">42</span>; <span class="hljs-comment">//b为真</span><br><span class="hljs-keyword">int</span> i = b; <span class="hljs-comment">//i == 1</span><br>i = <span class="hljs-number">3.14</span>; <span class="hljs-comment">//i == 3</span><br><span class="hljs-keyword">double</span> pi = i; <span class="hljs-comment">//pi == 3.0</span><br><span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">char</span> c = <span class="hljs-number">-1</span>; <span class="hljs-comment">//假设char占8比特，c == 255</span><br><span class="hljs-keyword">signed</span> <span class="hljs-keyword">char</span> c2 = <span class="hljs-number">256</span>; <span class="hljs-comment">//假设char占8比特，c2的值是未定义的</span><br></code></pre></td></tr></table></figure></li>
+<li><p>类型所能表示的值的范围决定了转换的过程。</p>
+</li>
+<li><p>当给无符号类型一个超出它表示范围的值时，结果是初始值对无符号类型表示数值总数取模后的余数。例如，8比特大小的unsigned char可以表示0至255区间内的值，如果我们赋了一个区间以外的值，则实际的结果是该值对256取模后所得的余数。因此，把-1赋给8比特大小的unsigned char所得的结果是255。</p>
+</li>
+<li><p>当给带符号类型一个超出它表示范围的值时，结果是未定义的，此时程序可能继续工作，可能崩溃，也可能生成垃圾数据。</p>
+</li>
+<li><p>在一个算术表达式中既有无符号数又有int值时，那个int值就会转换成无符号数。把int转换成无符号数的过程和把int直接赋给无符号变量一样。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">unsigned</span> u = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">int</span> i = <span class="hljs-number">-42</span>;<br>std::cout&lt;&lt;i + i&lt;&lt;std::endl; <span class="hljs-comment">//-84</span><br>std::cout&lt;&lt;u + i&lt;&lt;std::endl; <span class="hljs-comment">//4294967264</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">unsigned</span> u1 = <span class="hljs-number">42</span>, u2 = <span class="hljs-number">10</span>;<br>std::cout&lt;&lt;u1 - u2&lt;&lt;std::endl; <span class="hljs-comment">//32</span><br>std::cout&lt;&lt;u2 - u1&lt;&lt;std::endl; <span class="hljs-comment">//4294967264</span><br></code></pre></td></tr></table></figure></li>
+<li><p>综上，避免出现错误的一个方式就是不要混用带符号类型和无符号类型。</p>
+</li>
+<li><p>练习2.3 2.4</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">unsigned</span> u = <span class="hljs-number">10</span>, u2 = <span class="hljs-number">42</span>;<br>std::cout &lt;&lt; u2 - u &lt;&lt; std::endl; <span class="hljs-comment">//32</span><br>std::cout &lt;&lt; u - u2 &lt;&lt; std::endl; <span class="hljs-comment">//4294967264</span><br><br><span class="hljs-keyword">int</span> i = <span class="hljs-number">10</span>, i2 = <span class="hljs-number">42</span>;<br>std::cout &lt;&lt; i2 - i &lt;&lt; std::endl; <span class="hljs-comment">//32</span><br>std::cout &lt;&lt; i - i2 &lt;&lt; std::endl; <span class="hljs-comment">//-32</span><br>std::cout &lt;&lt; i - u &lt;&lt; std::endl; <span class="hljs-comment">//0</span><br>std::cout &lt;&lt; u - i &lt;&lt; std::endl; <span class="hljs-comment">//0</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="字面值常量"><a href="#字面值常量" class="headerlink" title="字面值常量"></a>字面值常量</h4><ol>
+<li><p>每个字面值常量都对应一种数据类型，字面值常量的形式和值决定了它的数据类型。</p>
+</li>
+<li><p>可以将整型字面量写作十进制、八进制数或者十六进制数的形式。以0开头的整数表示8进制数，以0x或者0X开头的表示十六进制数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">20</span>;<span class="hljs-comment">//十进制</span><br><span class="hljs-number">024</span>；<span class="hljs-comment">//八进制</span><br><span class="hljs-number">0x14</span>;<span class="hljs-comment">//十六进制</span><br></code></pre></td></tr></table></figure></li>
+<li><p>整型字面值具体的数据类型由它的值和符号确定。默认情况下，十进制字面值常量是带符号数，八进制和十六进制字面值即可能是带符号的也可能是无符号的。</p>
+</li>
+<li><p>十进制字面值常量的类型是int、long、long long中尺寸最小的那个，当然前提是这种类型要能容纳下当前的值。</p>
+</li>
+<li><p>八进制和十六进制的字面值常量的类型是能容纳其数值的int、unsigned int、long、unsigned long、long long和unsigned long long中的尺寸的最小者。</p>
+</li>
+<li><p>如果一个字面值连与之关联的最大的数据类型都放不下，将产生错误。</p>
+</li>
+<li><p>类型short没有对应的字面值。</p>
+</li>
+<li><p>浮点型字面值表现为一个小数或者以科学计数法表示的指数，其中的指数以E或者e标识。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-number">3.14159</span>;<br><span class="hljs-number">3.14159e0</span>;<br><span class="hljs-number">3.14159E0</span>;<br><span class="hljs-number">0.</span>;<br><span class="hljs-number">0e0</span>;<br><span class="hljs-number">.001</span>;<br></code></pre></td></tr></table></figure></li>
+<li><p>由单引号括起来的一个字符称为char类型字面值，双引号括起来的零个或者多个字符则构成字符串类型字面值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-string">&#x27;a&#x27;</span>;<span class="hljs-comment">//字符字面值</span><br><span class="hljs-string">&quot;hello world！&quot;</span>;<span class="hljs-comment">//字符串字面值</span><br></code></pre></td></tr></table></figure></li>
+<li><p>字符串字面值类型实际上是由常量字符构成的数组。</p>
+</li>
+<li><p>编译器在每个字符串的结尾处添加一个空字符(‘\0’)，因此，字符串字面值的实际长度要比它的内容多1。</p>
+</li>
+<li><p>字面值’A’表示的就是单独的字符’A’，而字符串“A”则代表了一个字符的数组，该数组包含两个字符：一个是字母A，另一个是空字符。</p>
+</li>
+<li><p>字符串字面值可以分多行书写，它们实际上是一个整体：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::cout&lt;&lt;<span class="hljs-string">&quot;line first&quot;</span><br>    	   <span class="hljs-string">&quot;line second&quot;</span>&lt;&lt;std::endl;<br></code></pre></td></tr></table></figure></li>
+<li><p>转义序列主要用于表示一些不可打印的字符或者在cpp语言中有特殊含义的字符，转义序列均以” \ “作为开始。常见的需要转义的字符包括单引号，双引号，问号，反斜线。在程序中，转义序列被当作一个字符使用。</p>
+</li>
+<li><p>泛化的转义序列，其形式是\x之后跟一个或者多个十六进制数字，或者\后面跟1个、2个或者3个八进制数字，其中数字部分表示的是字符对应的数值。</p>
+</li>
+<li><p>如果\后面跟着的八进制数字超过3个，只有前3个数字与\构成转义序列。例如，”\1234”表示两个字符，即八进制数123对应的字符以及字符4。</p>
+</li>
+<li><p>\x要用到后面跟着的所有数字，例如，”\x1234”表示一个16位的字符，该字符由这4个16进制数所对应的比特唯一确定。</p>
+</li>
+<li><p>通过添加前缀和后缀，可以改变整型、浮点型和字符型字面值的默认类型。</p>
+</li>
+<li><p>true和false是布尔类型的字面值。</p>
+</li>
+<li><p>nullptr是指针字面值。</p>
+</li>
+<li><p>练习2.5，指出下属字面值的数据类型并说明每一组内几种字面值的区别；</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs cpp">(a)<span class="hljs-string">&#x27;a&#x27;</span>, <span class="hljs-string">L&#x27;a&#x27;</span>, <span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-string">L&quot;a&quot;</span><br>    <span class="hljs-string">&#x27;a&#x27;</span>表示字符a<br>    <span class="hljs-string">L&#x27;a&#x27;</span>表示宽字符型字面值a，且类型是<span class="hljs-keyword">wchar_t</span><br>    <span class="hljs-string">&quot;a&quot;</span>表示字符串a<br>    <span class="hljs-string">L&quot;a&quot;</span>表示宽字符型字符串<span class="hljs-built_in">a</span><br>(b)<span class="hljs-number">10</span>, <span class="hljs-number">10u</span>, <span class="hljs-number">10L</span>, <span class="hljs-number">10uL</span>, <span class="hljs-number">012</span>, <span class="hljs-number">0xc</span><br>    <span class="hljs-number">10</span>表示普通的整数类型字面值<br>    <span class="hljs-number">10u</span>表示一个无符号数<br>    <span class="hljs-number">10L</span>表示一个长整型数<br>    <span class="hljs-number">10uL</span>表示一个无符号长整型数<br>    <span class="hljs-number">012</span>是一个八进制数<br>    <span class="hljs-number">0xc</span>是一个十六进制数<br>(c)<span class="hljs-number">3.14</span>, <span class="hljs-number">3.14f</span>, <span class="hljs-number">3.14L</span><br>    <span class="hljs-number">3.14</span>是一个普通的浮点类型字面值<br>    <span class="hljs-number">3.14f</span>表示一个<span class="hljs-keyword">float</span>类型的单精度浮点数<br>    <span class="hljs-number">3.14L</span>表示一个<span class="hljs-keyword">long</span> <span class="hljs-keyword">double</span>类型的扩展精度浮点数<br>(d)<span class="hljs-number">10</span>, <span class="hljs-number">10u</span>, <span class="hljs-number">10.</span>, <span class="hljs-number">10e-2</span><br>    <span class="hljs-number">10</span>是一个整数<br>    <span class="hljs-number">10u</span>是一个无符号整数<br>    <span class="hljs-number">10.</span>是一个浮点数<br>    <span class="hljs-number">10e-2</span>是一个科学计数法表示的浮点数<br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.6，下面两组定义是否有区别，如果有，请叙述之；</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> month = <span class="hljs-number">9</span>, day = <span class="hljs-number">7</span>;<br><span class="hljs-keyword">int</span> month = <span class="hljs-number">09</span>, day = <span class="hljs-number">07</span>;<br>第二组编译的时候会报错。因为以<span class="hljs-number">0</span>开头的是八进制数，而数字<span class="hljs-number">9</span>显然超出了八进制数所能表示的范围，所以第二组定义无法被编译通过。<br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.7，下述字面值表示何种含义？他们各自的数据类型是什么？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp">(a)<span class="hljs-string">&quot;Who goes with F\145rugs?\012&quot;</span><br>    字符串，包含两个转义字符。\<span class="hljs-number">145</span>表示<span class="hljs-string">&#x27;e&#x27;</span>,\<span class="hljs-number">012</span>表示<span class="hljs-string">&#x27;\n&#x27;</span><br>    因此该字符串的输出结果为<span class="hljs-string">&quot;Who goes with Ferugs?&quot;</span><br>(b)<span class="hljs-number">3.14e1</span>L<br>    科学计数法表示的扩展精度浮点数，大小为<span class="hljs-number">3.14</span> * <span class="hljs-number">10</span> ^ <span class="hljs-number">1</span> = <span class="hljs-number">31.4</span><br>(c)<span class="hljs-number">1024f</span><br>    试图表示一个单精度浮点数，但是在某些编译器中会报错，因为后缀f直接跟在了整数<span class="hljs-number">1024</span>后面<br>    建议修改成<span class="hljs-number">1024.f</span><br>(d)<span class="hljs-number">3.14L</span><br>    扩展精度浮点数，类型为<span class="hljs-keyword">long</span> <span class="hljs-keyword">double</span>，大小为<span class="hljs-number">3.14</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.8，请用转义序列编写一段程序，要求先输出2M，然后转到新一行。修改程序使其先输出2，然后输出制表符，再输出M，最后转到新一行。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	std::cout &lt;&lt; <span class="hljs-string">&quot;2\x4d\012&quot;</span>;<br>	std::cout &lt;&lt; <span class="hljs-string">&quot;2\tM\n&quot;</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="变量定义"><a href="#变量定义" class="headerlink" title="变量定义"></a>变量定义</h4><ol>
+<li><p>变量能提供一个具名的、可供程序操作的存储空间。cpp中的每个变量都有其数据类型，数据类型决定着变量所占内存空间的大小和布局方式、该空间能存储的值的范围以及变量能参与的运算。</p>
+</li>
+<li><p>在cpp中，”变量”和”对象”一般可以互换使用。</p>
+</li>
+<li><p>初始化不是赋值，初始化的含义是创建变量时赋予其一个初始值，而赋值的含义是把对象的当前值擦除，而以一个新值来替代。</p>
+</li>
+<li><p>初始化的多种形式</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> a = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">int</span> b = &#123; <span class="hljs-number">0</span> &#125;;<br>	<span class="hljs-keyword">int</span> c&#123;<span class="hljs-number">0</span>&#125;;<br>	<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">d</span><span class="hljs-params">(<span class="hljs-number">0</span>)</span></span>;<br>	std::cout &lt;&lt; a &lt;&lt; b &lt;&lt; c &lt;&lt; d &lt;&lt; std::endl;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>用花括号来进行初始化被称为列表初始化。当用于内置类型的变量的时候，列表初始化有一种重要的特点，如果使用列表初始化且初始值存在丢失信息的风险的时候，编译器会报错。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">long</span> <span class="hljs-keyword">double</span> id = <span class="hljs-number">3.1415926536</span>;<br><span class="hljs-keyword">int</span> a = &#123; id &#125;;<br><span class="hljs-keyword">int</span> b&#123; id &#125;;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">c</span><span class="hljs-params">(id)</span></span>;<br><span class="hljs-keyword">int</span> d = id;<br><span class="hljs-comment">//C4244	“初始化”: 从“long double”转换到“int”，可能丢失数据</span><br></code></pre></td></tr></table></figure></li>
+<li><p>如果定义变量的时候没有指定初值，则变量被默认初始化，此时变量被赋予了“默认值”。默认值到底是什么由变量类型决定，同时定义变量的位置也会对此有影响。</p>
+</li>
+<li><p>如果是内置类型的变量未被显式初始化，它的值由定义的位置决定。定义于任何函数体之外的变量被初始化为0。定义在函数体内部的内置类型变量将不被初始化。一个未被初始化的内置类型变量的值是未定义的，如果试图拷贝或者以其它的形式访问此类型的值将引发错误。</p>
+</li>
+<li><p>每个类各自决定其初始化对象的方式。而且，是否允许不经初始化就定义对象也由类自己决定。如果类允许这种行为，它将决定对象的初始值到底是什么。</p>
+</li>
+<li><p>绝大多数类都支持无须显式初始化而定义对象，这样的类提供了一个合适的默认值。比如string类规定如果没有指定初值则生成一个空串。</p>
+</li>
+<li><p>综上，定义于函数体内的内置类型的对象如果没有初始化，则其值未定义。类的对象如果没有显式的初始化，则其值由类决定。所以为了保证程序的安全，建议初始化每一个内置类型的变量。</p>
+</li>
+<li><p>练习2.9 解释下列定义的含义，对于非法的定义，请说明错在何处并将其改正。</p>
+<figure class="highlight cc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cc"><span class="hljs-comment">//std::cin &gt;&gt; int a;</span><br><span class="hljs-comment">//错误，输入运算符右侧的右侧需要一个明确的变量名称，而非定义变量的语句</span><br><span class="hljs-comment">//int i = &#123; 3.14 &#125;;</span><br><span class="hljs-comment">//错误，将浮点数3.14赋值给一个整型变量i，这样做将导致小数部分丢失，是一种不建议的窄化操作。</span><br><span class="hljs-comment">//double salary = wage = 9999.99;</span><br><span class="hljs-comment">//错误，在声明语句中声明多个变量时需要用逗号将变量名隔开，而不能直接用赋值运算符连接</span><br><span class="hljs-keyword">int</span> i = <span class="hljs-number">3.14</span>;<br><span class="hljs-comment">//不会报错，这样做将造成小数部分的丢失，是一种不建议的窄化操作</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.10 下列变量的初值分别是什么？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs cpp">std::string global_str;<br><span class="hljs-keyword">int</span> global_int;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	std::string local_str;<br>	<span class="hljs-keyword">int</span> local_int;<br>	<span class="hljs-comment">//对于string类型的变量来说</span><br>	<span class="hljs-comment">//string类型本身接受无参数的初始化方式，所以不论变量定义在函数内部还是函数外部都默认初始化为空串</span><br>	<span class="hljs-comment">//对于内置类型int来说</span><br>	<span class="hljs-comment">//global_int定义在所有函数体之外，所以其默认初始化为0</span><br>	<span class="hljs-comment">//local_int定义在main函数的内部，将不被初始化，如果程序试图拷贝或者输出未初始化的变量，将遇到一个未定义的奇异值</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="变量声明与定义的关系"><a href="#变量声明与定义的关系" class="headerlink" title="变量声明与定义的关系"></a>变量声明与定义的关系</h4><ol>
+<li><p>为了允许把程序拆分成多个逻辑部分来编写，cpp支持分离式编译机制，该机制允许将程序分割为若干个文件，每个文件可以被独立编译。为了支持分离式编译，cpp语言将变量声明和变量定义区分开来。</p>
+</li>
+<li><p>变量声明：使得名字为程序所知，一个文件如果想使用别处定义的变量则必须包含对那个名字的声明。</p>
+</li>
+<li><p>变量定义：负责创建与名字关联的实体。</p>
+</li>
+<li><p>声明和定义的区别：变量声明规定了变量的类型和名字，这一点上与变量定义相同。但是除此之外，定义还申请存储空间，也可能会为变量指定一个初值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> i; <span class="hljs-comment">//声明i而非定义i</span><br>	<span class="hljs-keyword">int</span> j; <span class="hljs-comment">//声明并定义j</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>任何包含了显式初始化的声明即成为定义。extern语句如果包含初始值就不再是声明，而是定义了。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> i = <span class="hljs-number">3</span>;<br></code></pre></td></tr></table></figure></li>
+<li><p>在函数体内部，如果试图初始化一个由extern关键字标记的变量，将引发错误。</p>
+</li>
+<li><p>变量只能被定义一次，但是可以多次被声明。</p>
+</li>
+<li><p>如果要在多个文件中使用同一个变量，就必须将变量的声明和定义分离。此时，变量的定义必须出现在且只能出现在一个文件中，而其它用到该变量的文件必须对其进行声明，却绝对不能重复定义。</p>
+</li>
+<li><p>练习2.11 指出下面的语句是声明还是定义</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> ix = <span class="hljs-number">1024</span>; <span class="hljs-comment">//定义了变量ix</span><br><span class="hljs-keyword">int</span> iy; <span class="hljs-comment">//声明并定义了变量iy</span><br><span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> iz; <span class="hljs-comment">//声明了变量iz</span><br></code></pre></td></tr></table></figure></li>
+<li><p>静态类型：cpp是一种静态类型语言，其含义是在编译阶段检查类型。其中，检查类型的过程称为类型检查。</p>
+</li>
+<li><p>对象的类型决定了对象所能参与的运算。在cpp语言中，编译器负责检查数据类型是否支持要执行的运算，如果试图执行类型不支持的运算，编译器将报错并且不会生成可执行文件。这就要求我们在使用某个变量之前必须声明其类型。</p>
+</li>
+</ol>
+<h4 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h4><ol>
+<li><p>练习2.12 请指出下面的名字中哪些是非法的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> <span class="hljs-keyword">double</span> = <span class="hljs-number">3.14</span>;<br><span class="hljs-keyword">int</span> _;<br><span class="hljs-keyword">int</span> <span class="hljs-keyword">catch</span><span class="hljs-number">-22</span>;<br><span class="hljs-keyword">int</span> <span class="hljs-number">1</span>_or_2 = <span class="hljs-number">1</span>;<br><span class="hljs-keyword">double</span> Double = <span class="hljs-number">3.14</span>;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="名字的作用域"><a href="#名字的作用域" class="headerlink" title="名字的作用域"></a>名字的作用域</h4><ol>
+<li><p>作用域是程序的一部分，在其中名字有其特定的含义。cpp语言中大多数作用域都以花括号分隔。</p>
+</li>
+<li><p>同一个名字在不同的作用的作用域中可能指向不同的实体。名字的有效区域始于名字的声明语句，以声明语句所在的作用域末端为结束。</p>
+</li>
+<li><p>作用域可以分为全局作用域和块作用域。</p>
+</li>
+<li><p>全局作用域：定义在函数体之外。一旦声明之后，全局作用域内的名字在整个程序的范围内都可以使用。</p>
+</li>
+<li><p>作用域能彼此包含，被包含的作用域称为内层作用域，包含着别的作用域的作用域称为外层作用域。</p>
+</li>
+<li><p>作用域中一旦声明了某个名字，它所嵌套着的所有作用域中都能访问该名字。同时，允许在内存作用域中重新定义外层作用域已有的名字。</p>
+</li>
+<li><p>如果函数有可能用到某全局变量，则不宜再定义一个同名的局部变量。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> reused = <span class="hljs-number">42</span>; <span class="hljs-comment">//reused拥有全局作用域</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> unique = <span class="hljs-number">0</span>; <span class="hljs-comment">//unique拥有块作用域</span><br>	<span class="hljs-comment">//此时使用的是全局变量reused</span><br>	std::cout &lt;&lt; reused &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; unique &lt;&lt; std::endl;<br>	<span class="hljs-keyword">int</span> reused = <span class="hljs-number">0</span>;<span class="hljs-comment">//新建局部变量reused，覆盖了全局变量reused</span><br>	<span class="hljs-comment">//此时使用的是局部变量reused</span><br>	std::cout &lt;&lt; reused &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; unique &lt;&lt; std::endl;<br>	<span class="hljs-comment">//显式的访问全局变量reused</span><br>    <span class="hljs-comment">//使用作用域操作符::来覆盖默认的作用域规则</span><br>    <span class="hljs-comment">//因为全局作用域本身并没有名字，所以当作用域操作符的左侧为空时</span><br>    <span class="hljs-comment">//向全局作用域发出请求获取作用域操作符右侧名字对应的变量</span><br>	std::cout &lt;&lt; ::reused &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; unique &lt;&lt; std::endl;<br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.13  下面程序中j的值是多少？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> i = <span class="hljs-number">42</span>;<br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> i = <span class="hljs-number">100</span>;<br>	<span class="hljs-keyword">int</span> j = i; <span class="hljs-comment">//100</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.14  下面的程序合法嘛？如果合法，它将输出什么？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> i = <span class="hljs-number">100</span>, sum = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i != <span class="hljs-number">10</span>; ++i)&#123;<br>    sum += i;<br>&#125;<br>std::cout&lt;&lt;i&lt;&lt;<span class="hljs-string">&quot; &quot;</span>&lt;&lt;sum&lt;&lt;std::endl;<br><span class="hljs-comment">//合法，输出100 45</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><ol>
+<li><p>复合类型是基于其它类型定义的类型，引用和指针就是两种复合类型。</p>
+</li>
+<li><p>一条声明语句由一个基本数据类型和紧随其后的一个声明符列表组成。每个声明符命名了一个变量并指定该变量为与基本数据类型有关的某种类型。</p>
+</li>
+<li><p>在这里，我们使用术语”引用”，指的其实是左值引用。</p>
+</li>
+<li><p>引用为对象起了另一个名字，引用类型引用另一种类型。通过将声明符写成&amp;d的形式来定义引用类型，其中d是声明的变量名。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> ival = <span class="hljs-number">1024</span>;<br><span class="hljs-keyword">int</span> &amp;refVal = ival; <span class="hljs-comment">//refVal指向ival（是ival的另一个名字）</span><br><span class="hljs-keyword">int</span> &amp;refVal2; <span class="hljs-comment">//报错：引用必须被初始化</span><br></code></pre></td></tr></table></figure></li>
+<li><p>一般在初始化变量时，初始值会被拷贝到新建的对象中。</p>
+</li>
+<li><p>在定义引用时，程序把引用和它的初始值绑定在一起，而不是将初始值拷贝给引用。一旦初始化完成，引用将和它的初始值对象一直绑定在一起。因为无法令引用重新绑定到另一个对象，因此引用必须初始化。</p>
+</li>
+<li><p>引用并非对象，相反的，它只是为一个已经存在的对象所起的另外一个名字。定义了一个引用之后，对其进行的所有操作都是在与之绑定的对象上进行的。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp">relVal = <span class="hljs-number">2</span>;<br><span class="hljs-keyword">int</span> li = relVal;<br></code></pre></td></tr></table></figure></li>
+<li><p>因为引用本身不是一个对象，所以不能定义引用的引用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//正确：relVal3绑定到了那个与refVal绑定的对象上，这里就是绑定到ival上</span><br><span class="hljs-keyword">int</span> &amp;relVal = refVal;<br><span class="hljs-comment">//正确，i被初始化为refVal的值</span><br><span class="hljs-keyword">int</span> i = refVal;<br></code></pre></td></tr></table></figure></li>
+<li><p>引用的类型要和与之绑定的对象严格匹配。（存在两种例外情况，后面说明）</p>
+</li>
+<li><p>引用只能绑定到对象上，而不能与字面值或某个表达式的计算结果绑定在一起。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//错误：引用类型的初始值必须是一个对象</span><br><span class="hljs-keyword">int</span> &amp;refVal = <span class="hljs-number">10</span>;<br><span class="hljs-keyword">double</span> dval = <span class="hljs-number">3.14</span>;<br><span class="hljs-comment">//错误：此处引用类型的初始值必须是int型对象</span><br><span class="hljs-keyword">int</span> &amp;refVal = dval;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.15 下面的哪个定义是不合法的？为什么？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> ival = <span class="hljs-number">1.01</span>; <span class="hljs-comment">//会被窄化，但是合法</span><br><span class="hljs-keyword">int</span>&amp; rval1 = <span class="hljs-number">1.01</span>; <span class="hljs-comment">//非法，引用必须指向一个实际存在的对象而非字面值常量</span><br><span class="hljs-keyword">int</span>&amp; rval2 = ival; <span class="hljs-comment">//合法</span><br><span class="hljs-keyword">int</span>&amp; rval3; <span class="hljs-comment">//因为无法令引用重新绑定到另一个对象，所以引用必须进行初始化</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.16 考查下面的所有赋值然后回答：哪些赋值是不合法的？为什么？哪些赋值是合法的？它们执行了什么样的操作？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>, &amp; r1 = i;<br><span class="hljs-keyword">double</span> d = <span class="hljs-number">0</span>, &amp; r2 = d;<br>r2 = <span class="hljs-number">3.14159</span>; <span class="hljs-comment">//合法的，为引用赋值实际上是把值赋给了与引用绑定的对象，在这里是把3.14159赋值给了变量d</span><br>r2 = r1; <span class="hljs-comment">//合法的，以引用作为初始值实际上是以引用绑定的对象作为初始值，在这里是把i的值赋值给了变量d</span><br>i = r2;<span class="hljs-comment">//把d的值赋值给了变量i，因为d是双精度浮点数而i是整数，所以该语句实际上执行了窄化操作。</span><br>r1 = d;<span class="hljs-comment">//合法，把d的值赋值给了变量i，与上一条语句一样执行了窄化操作。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.17 执行下面的代码段将输出什么结果？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> i, &amp; ri = i;<br>i = <span class="hljs-number">5</span>;<br>ri = <span class="hljs-number">10</span>;<br>std::cout &lt;&lt; i &lt;&lt; <span class="hljs-string">&quot; &quot;</span> &lt;&lt; ri &lt;&lt; std::endl;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><ol>
+<li><p>指针是”指向”另一种类型的复合类型。与引用类似，指针也实现了对其他对象的间接访问。</p>
+</li>
+<li><p>指针与引用是不同的。</p>
+</li>
+<li><p>指针本身就是一个对象，允许对指针进行赋值和拷贝，而且在指针的生命周期中它可以先后指向几个不同的对象。</p>
+</li>
+<li><p>指针无需在定义时赋初值，和其它内置类型一样，在块作用域内定义的指针如果没有进行初始化，也将拥有一个不确定的值。</p>
+</li>
+<li><p>定义指针的方法是将声明符写成*d的形式，其中d是变量名。</p>
+</li>
+<li><p>指针存放某个对象的地址，想要获取该地址，需要使用取地址符（操作符&amp;）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> ival = <span class="hljs-number">42</span>;<br><span class="hljs-keyword">int</span> *p = &amp;ival;<br><span class="hljs-comment">//p存放变量ival的地址</span><br></code></pre></td></tr></table></figure></li>
+<li><p>引用不是对象，没有实际的地址，所以不能定义指向引用的指针。</p>
+</li>
+<li><p>指针的类型要和它指向的对象进行严格匹配。（存在两种例外情况）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">double</span> dval;<br><span class="hljs-keyword">double</span> *pd = &amp;dval;<span class="hljs-comment">//正确，初始值是double型对象的地址</span><br><span class="hljs-keyword">double</span> *pd2 = pd;<span class="hljs-comment">//正确，初始值是指向double对象的指针</span><br><br><span class="hljs-keyword">int</span> *pi = pd; <span class="hljs-comment">//错误，指针Pi的类型和指针pd的类型不匹配</span><br>pi = &amp;dval; <span class="hljs-comment">//错误，试图把double型对象的地址赋值给int类型的指针</span><br></code></pre></td></tr></table></figure></li>
+<li><p>指针的值（地址）应属于下列四种状态之一：（1）指向一个对象（2）指向紧邻对象所占空间的下一个位置（3）空指针，意味着指针没有指向任何对象（4）无效指针，也就是上述情况之外的其它值。</p>
+</li>
+<li><p>如果指针指向了一个对象，则允许使用解引用符（*）来访问该对象。解引用操作只适用于那些确实指向了某个对象的有效指针。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> ival = <span class="hljs-number">42</span>;<br><span class="hljs-keyword">int</span> *p = &amp;ival; <span class="hljs-comment">//p存放着ival的指针</span><br>cout &lt;&lt; *p; <span class="hljs-comment">//由*得到指针p所指的对象，输出42</span><br><br><span class="hljs-comment">//对指针解引用会得出所指的对象，因此如果给解引用的结果赋值，实际上也就是给指针所指的对象赋值</span><br>*p = <span class="hljs-number">0</span>;<br>cout &lt;&lt; ival;<br></code></pre></td></tr></table></figure></li>
+<li><p>&amp;和*两个符号，在作为声明的一部分出现或者用作表达式里的操作符含义是截然不同的</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> i = <span class="hljs-number">42</span>;<br><span class="hljs-keyword">int</span>* p = &amp;i; <span class="hljs-comment">//*紧随类型名出现，说明p是一个指针；&amp;出现在表达式中，表示取地址符</span><br><span class="hljs-keyword">int</span>&amp; r = *p; <span class="hljs-comment">//&amp;紧随类型名出现，说明r是一个引用；*出现在表达式中，表示解引用符</span><br>r = <span class="hljs-number">50</span>;<br>std::cout &lt;&lt; i &lt;&lt; std::endl;<br></code></pre></td></tr></table></figure></li>
+<li><p>空指针不指向任何对象，在试图使用一个指针之前代码可以首先检查它是否为空，以下列出几个生成空指针的方法：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> *p1 = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> *p2 = <span class="hljs-literal">nullptr</span>;<br><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> cstdlib</span><br><span class="hljs-keyword">int</span> *p3 = <span class="hljs-literal">NULL</span>;<br><span class="hljs-comment">//NULL是一个预处理变量，这个变量在头文件cstdlib中定义，它的值就是0。</span><br><span class="hljs-comment">//预处理器是运行于编译过程之前的一段程序。</span><br><span class="hljs-comment">//预处理变量不属于命名空间std，它由预处理器负责管理，因此我们可以直接使用预处理变量而无须再前面加上std::。</span><br></code></pre></td></tr></table></figure>
+
+ <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//把int变量直接赋值给指针是错误的操作，即使int变量的值恰好等于0也不行</span><br><span class="hljs-keyword">int</span> zero = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> *p = zero; <span class="hljs-comment">//错误</span><br></code></pre></td></tr></table></figure></li>
+<li><p>建议初始化所有的指针，如果实在不清楚指针应该指向何处，就把它初始化为nullptr或者0。</p>
+</li>
+<li><p>指针和引用都能提供对其它对象的间接访问。</p>
+</li>
+<li><p>引用本身并非一个对象，一旦定义了一个引用，就无法令其再绑定到另外的对象，之后每次使用这个引用都是访问它最初绑定的那个对象。</p>
+</li>
+<li><p>指针和它存放的地址之间就没有这些限制了，给指针赋值就是令它存放一个新的地址，从而指向一个新的对象。</p>
+</li>
+<li><p>只要指针拥有一个合法值，就能将它用在条件表达式中。如果指针的值是0，条件取false。任何非0指针对应的条件值都是true。</p>
+</li>
+<li><p>对于两个类型相同的合法指针，可以使用相等操作符(==)或者不相等操作符(!=)来比较它们，比较的结果是布尔类型。如果两个指针存放的地址值相同，则它们相等；反之它们不相等。</p>
+</li>
+<li><p>两个指针存放的地址值相同有三种可能：（1）都为空（2）都指向同一个对象（3）都指向同一个对象的下一个地址。需要注意的是，一个指针指向某对象，同时另一个指针指向另外对象的下一个地址，此时也有可能出现这两个指针值相同的情况，即指针相等。</p>
+</li>
+<li><p>void*是一种特殊的指针类型，可以用于存放任意类型的地址。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">double</span> obj = <span class="hljs-number">3.14</span>, *pd = &amp;obj;<br><span class="hljs-keyword">void</span>* pv = &amp;obj;<br>pv = pd;<br></code></pre></td></tr></table></figure></li>
+<li><p>void*指针可以进行的操作：（1）拿它和别的指针比较（2）作为函数的输入输出（3）赋值给另一个void * 类型的指针。</p>
+</li>
+<li><p>void*指针不能进行的操作：不能直接操作void *指针指向的对象，因为并不知道这个对象到底是什么类型，也就无法确定能在这个对象上进行哪些操作。</p>
+</li>
+<li><p>练习2.18 编写代码分别更改指针的值和指针所指对象的值。</p>
+</li>
+<li><p>练习2.19 说明指针和引用的主要区别。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//相同点：指针指向内存中的某个对象，而引用绑定到内存中的某个对象，它们都实现了对其它对象的间接访问。</span><br><span class="hljs-comment">//不同点</span><br><span class="hljs-comment">//（1）指针本身就是一个对象，允许对指针赋值和拷贝，而且在指针的生命周期内它可以指向几个不同的对象；</span><br><span class="hljs-comment">//引用不是一个对象，无法令引用重新绑定到另外一个对象。</span><br><span class="hljs-comment">//（2）指针无须在定义时赋初值，和其它内置类型一样，在块作用域内定义的指针如果没有被初始化，也将拥有一个不确定的值。</span><br><span class="hljs-comment">//引用必须在定义的时候赋初值。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.20 请叙述下面这段代码的作用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> i = <span class="hljs-number">42</span>;<br><span class="hljs-keyword">int</span> *p1 = &amp;i;<br>*p1 = *p1 * *p1;<br><span class="hljs-comment">//作用 i = i * i; </span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.21 请解释下述定义。这些定义中有非法的嘛？如果有，为什么？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br><span class="hljs-comment">//非法的，dp是一个double指针，而i是一个int变量，类型不匹配</span><br><span class="hljs-keyword">double</span>* dp = &amp;i; <br><span class="hljs-comment">//非法的，不能直接把int变量赋给int指针</span><br><span class="hljs-keyword">int</span>* ip = i;<br><span class="hljs-comment">//合法的</span><br><span class="hljs-keyword">int</span>* p = &amp;i;<br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.22 假设p是一个int型指针，请说明下述代码的含义。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">if</span>(p) <span class="hljs-comment">//...</span><br><span class="hljs-comment">//指针p作为条件的时候，实际上检验的就是指针本身的值，即指针所指的地址值；</span><br><span class="hljs-comment">//如果指针指向一个真实存在的变量，则其值必不为0，此时条件为真；</span><br><span class="hljs-comment">//p为空指针，条件为假；</span><br><span class="hljs-comment">//如果指针没有指向任何对象或者是无效指针，则对p的使用将引发不可预计的结果。</span><br><span class="hljs-keyword">if</span>(*p) <span class="hljs-comment">//...</span><br><span class="hljs-comment">// *p == 0条件为假</span><br><span class="hljs-comment">// *p != 0条件为真</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.23 给定指针p，你能知道它是否指向了一个合法的对象嘛？如果能，叙述判断的思路；如不能，说明原因。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//在cpp程序中，应该尽量初始化所有的指针，并且尽可能等定义了对象之后再定义指向它的指针。</span><br><span class="hljs-comment">//如果实在不清楚指针应该指向何处，就把他初始化为nullptr或者0。</span><br><span class="hljs-comment">//nullptr是一个特殊字面值，它可以转换成任意其它的指针类型。</span><br><span class="hljs-comment">//在上述条件下，判断p是否指向合法的对象，只需要把p作为if语句的条件即可。</span><br><br><span class="hljs-comment">//如果不注意初始化所有指针而贸然判断指针的值，则有可能引发不可预知的结果。</span><br><span class="hljs-comment">//一种处理的办法是把if(p)置于try结构中，当程序块顺利执行时，表示p指向了合法的对象；</span><br><span class="hljs-comment">//当程序块出错跳转到catch语句时，表示p没有指向合法的对象。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.24 在下面这段代码中，为什么p合法而lp非法？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> i = <span class="hljs-number">42</span>;<br><span class="hljs-keyword">void</span>* p = &amp;i;<br><span class="hljs-keyword">long</span>* lp = &amp;i;<br><span class="hljs-comment">//void* 是一种特殊的指针类型，可以用于存放任意对象的地址。</span><br><span class="hljs-comment">//lp不合法的原因时两者的类型不匹配。</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="理解复合类型的声明"><a href="#理解复合类型的声明" class="headerlink" title="理解复合类型的声明"></a>理解复合类型的声明</h4><ol>
+<li><p>变量的定义包括一个基本数据类型和一组声明符，其中类型修饰符是声明符的一部分，基本数据类型和类型修饰符并没有耦合关系。</p>
+</li>
+<li><p>声明符中修饰符的个数并没有限制。以指针为例，指针是内存中的对象，像其它对象一样也有自己的地址，因此可以把指针的地址再存放到另一个指针中。</p>
+</li>
+<li><p>通过*的个数可以区分指针的级别。也就是说，**表示指向指针的指针，***表示指向指针的指针的指针，以此类推。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> ival = <span class="hljs-number">1024</span>;<br><span class="hljs-keyword">int</span> *pi = &amp;ival; <span class="hljs-comment">//pi指向一个int型的数</span><br><span class="hljs-keyword">int</span> **ppi = &amp;pi; <span class="hljs-comment">//ppi指向一个int型的指针</span><br></code></pre></td></tr></table></figure></li>
+<li><p>“int **” 类型的值不能用于初始化 “int *” 类型的实体。</p>
+</li>
+<li><p>引用本身不是一个对象，因此不能定义指向引用的指针。但是指针是对象，所以存在对指针的引用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;<br>	<span class="hljs-keyword">int</span> i = <span class="hljs-number">42</span>;<br>	<span class="hljs-keyword">int</span>* p; <span class="hljs-comment">//p是一个int类型的指针</span><br>	<span class="hljs-keyword">int</span>*&amp; r = p; <span class="hljs-comment">//r是一个对指针p的引用</span><br>	r = &amp;i;<br>	*r = <span class="hljs-number">0</span>;<br>	std::cout &lt;&lt; i &lt;&lt; std::endl; <span class="hljs-comment">//0</span><br>&#125;<br><span class="hljs-comment">//要理解r的类型到底是什么，最简单的办法是从右向左阅读r的定义</span><br><span class="hljs-comment">//离变量名最近的符号对变量的类型有最直接的影响</span><br><span class="hljs-comment">//r是一个引用</span><br><span class="hljs-comment">//声明符的其余部分用以确定r引用的类型是什么</span><br><span class="hljs-comment">//此例中的符号*说明r引用的是一个指针</span><br><span class="hljs-comment">//最后声明的基本数据类型指出r引用的是一个int类型的指针</span><br></code></pre></td></tr></table></figure></li>
+<li><p>练习2.25 说明下列变量的类型和值</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> * ip, i, &amp;r = i;<br><span class="hljs-keyword">int</span> i, *ip = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">int</span> *ip, ip2;<br></code></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="const的引用"><a href="#const的引用" class="headerlink" title="const的引用"></a>const的引用</h4><ol>
+<li><p>定义变量时使用const，变量的值不能被改变。</p>
+</li>
+<li><p>const对象必须初始化。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> i = <span class="hljs-built_in">get_size</span>(); <span class="hljs-comment">//正确，运行时初始化</span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> j = <span class="hljs-number">42</span>;<span class="hljs-comment">//正确，编译时初始化</span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> k; <span class="hljs-comment">//错误，k是一个未经初始化的常量</span><br></code></pre></td></tr></table></figure></li>
+<li><p>默认状态下，const对象仅在文件内有效。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//以编译时初始化的方式定义一个const对象</span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> bufSize = <span class="hljs-number">512</span>;<br><span class="hljs-comment">//编译器在编译的过程中将用到该变量的地方都替换成对应的值。</span><br><span class="hljs-comment">//也就是说，编译器会找到代码中所有用到bufSize的地方，然后用512替换。</span><br><span class="hljs-comment">//为了执行替换，编译器必须知道变量的初始值。</span><br><span class="hljs-comment">//如果程序包含多个文件，则每个用了const对象的文件都必须能访问到它的初始值才行。</span><br><span class="hljs-comment">//要做到这一点，就必须在每一个用到变量的文件中都有对它的定义。</span><br><span class="hljs-comment">//为了支持这一用法，同时避免对同一变量的重复定义，</span><br><span class="hljs-comment">//默认情况下，const对象被设定为仅在当前文件中有效。</span><br><span class="hljs-comment">//当多个文件中出现了同名的const变量时，其实等同于在不同的文件中分别定义了独立的变量。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>某些时候有这样一种const变量，它的初始值不是一个常量表达式，又确实有必要在文件中共享，这种情况下，我们不希望编译器为每个文件分别生成独立的变量。相反我们想让这类const对象像其它对象一样工作，也就是说，只在一个文件中定义const，而在其他多个文件中声明并且使用它。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//解决的办法：对于const变量不管是声明还是定义都添加extern关键字，这样只需要定义一次就可以了。</span><br><span class="hljs-comment">//file_1.cc定义并初始化了一个常量，该常量能被其他文件访问</span><br><span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> bufSize = <span class="hljs-built_in">func</span>();<br><span class="hljs-comment">//file_1.h头文件</span><br><span class="hljs-keyword">extern</span> <span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> bufSzie;<br></code></pre></td></tr></table></figure></li>
+<li><p>综上，如果想在多个文件之间共享const对象，必须在变量的定义之前添加extern关键字。</p>
+</li>
+<li><p>练习2.26 下面哪些句子是合法的？如果有不合法的句子，请说明是为什么？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> buf; <span class="hljs-comment">//非法的，const对象没有初始化</span><br><span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> sz = cnt;<br>++cnt; <br>++sz;<span class="hljs-comment">//非法，const对象其值不能被改变，也不能执行自增操作。</span><br></code></pre></td></tr></table></figure></li>
+<li><p>常量引用：对const的引用</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> ci = <span class="hljs-number">1024</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;r1 = ci; <span class="hljs-comment">//引用及其对应的对象都是常量</span><br>r1 = <span class="hljs-number">42</span>; <span class="hljs-comment">//错误操作，因为r1是对常量的引用</span><br><span class="hljs-keyword">int</span> &amp;r2 = ci; <span class="hljs-comment">//错误，试图让一个非常量引用指向一个常量对象</span><br></code></pre></td></tr></table></figure></li>
+<li><p>引用的类型必须与其所引用对象的类型保持一致</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//例外情况1</span><br><span class="hljs-comment">//初始化常量引用时允许用任意表达式作为初始值</span><br><span class="hljs-comment">//只要该表达式的结果能转换成引用的类型即可。</span><br><span class="hljs-comment">//尤其，允许为一个常量引用绑定非常量的对象、字面值，甚至是一个一般的表达式</span><br><span class="hljs-keyword">int</span> i = <span class="hljs-number">42</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;r1 = i; <span class="hljs-comment">//正确，常量引用绑定到普通的int对象上</span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;r2 = <span class="hljs-number">42</span>; <span class="hljs-comment">//正确，常量引用绑定到字面值上</span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;r3 = r1 * <span class="hljs-number">2</span>; <span class="hljs-comment">//正确，r3是一个常量引用</span><br><span class="hljs-keyword">int</span> &amp;r4 = r1 * <span class="hljs-number">2</span>; <span class="hljs-comment">//错误，r4是一个普通的非常量引用</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">double</span> dval = <span class="hljs-number">3.14</span>;<br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;r1 = dval;<br><br><span class="hljs-comment">//编译器把上述代码变成了如下形式：</span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> temp = dval; <span class="hljs-comment">//让双精度浮点数生成一个临时的整型常量</span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;r1 = temp; <span class="hljs-comment">//让r1绑定这个临时量</span><br></code></pre></td></tr></table></figure></li>
+<li><p>常量引用仅对引用可参与的操作做出了限定，对于引用的对象本身是不是一个常量未作限定。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">int</span> i = <span class="hljs-number">42</span>;<br><span class="hljs-keyword">int</span> &amp;r1 = i; <span class="hljs-comment">//引用r1绑定对象i</span><br><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> &amp;r2 = i; <span class="hljs-comment">//r2也绑定对象i，但是不允许通过r2修改i的值</span><br>r1 = <span class="hljs-number">0</span>;<span class="hljs-comment">//r1并非常量，i的值修改为0</span><br>r2 = <span class="hljs-number">0</span>;<span class="hljs-comment">//错误，r2是一个常量引用</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+<p>​    </p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/cpp-primer-2-40/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">cpp_primer_2_40</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/hello-world/">
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            总访问量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            总访客数 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/tocbot@4.12.3/dist/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.8/dist/clipboard.min.js" ></script>
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      jQuery('#local-search-input').on('click', function() {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      });
+      jQuery('#modalSearch').on('shown.bs.modal', function() {
+        jQuery('#local-search-input').focus();
+      });
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
