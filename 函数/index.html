@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      769 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      8
        分钟
     </span>
   
@@ -229,7 +229,29 @@
             <h1 style="display: none">函数</h1>
             
             <div class="markdown-body">
-              
+              <ol>
+<li><p>在定义函数时指定的形参，在未出现函数调用时，它们并不占内存中的存储单元，因此称它们是形式参数或虚拟参数，简称形参，表示它们并不是实际存在的数据，所以，形参里的变量不能赋值。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>, <span class="hljs-keyword">int</span> b = <span class="hljs-number">20</span>)</span></span>; <span class="hljs-comment">// error, 形参不能赋值</span><br><span class="hljs-comment">//cpp里可以给形参赋值，称为默认实参</span><br></code></pre></td></tr></table></figure></li>
+<li><p>实参与形参的个数应相等，类型应匹配(相同或赋值兼容)。实参与形参按顺序对应，一对一地传递数据。</p>
+</li>
+<li><p>实参可以是常量、变量或表达式，无论实参是何种类型的量，在进行函数调用时，它们都必须具有确定的值，以便把这些值传送给形参。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">// 函数的定义</span><br><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">test</span><span class="hljs-params">(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b)</span></span><br><span class="hljs-function"></span>&#123;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-comment">// 函数的调用</span><br>	<span class="hljs-keyword">int</span> p = <span class="hljs-number">10</span>, q = <span class="hljs-number">20</span>;<br>	<span class="hljs-built_in">test</span>(p, q);	<span class="hljs-comment">// right</span><br>	<span class="hljs-built_in">test</span>(<span class="hljs-number">11</span>, <span class="hljs-number">30</span> - <span class="hljs-number">10</span>); <span class="hljs-comment">// right</span><br>	<span class="hljs-built_in">test</span>(<span class="hljs-keyword">int</span> a, <span class="hljs-keyword">int</span> b); <span class="hljs-comment">// error, 不应该在圆括号里定义变量</span><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>返回值如果小于等于四个字节，则存在寄存器中；如果大于四个字节，则存在内存中。</p>
+</li>
+<li><p>如果使用用户自己定义的函数，而该函数与调用它的函数（即主调函数）不在同一文件中，或者函数定义的位置在主调函数之后，则必须在调用此函数之前对被调用的函数作声明。</p>
+</li>
+<li><p>所谓函数声明，就是在函数尚在未定义的情况下，事先将该函数的有关信息通知编译系统，相当于告诉编译器，函数在后面定义，以便使编译能正常进行。</p>
+</li>
+<li><p>注意：一个函数只能被定义一次，但可以声明多次。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-comment">//函数的声明可以不加extern</span><br><span class="hljs-function"><span class="hljs-keyword">extern</span> <span class="hljs-keyword">int</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span>; <span class="hljs-comment">// 函数的声明，分号不能省略</span><br><span class="hljs-comment">// int max(int, int); // 另一种方式</span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">int</span> a = <span class="hljs-number">10</span>, b = <span class="hljs-number">25</span>, num_max = <span class="hljs-number">0</span>;<br>	num_max = <span class="hljs-built_in">max</span>(a, b); <span class="hljs-comment">// 函数的调用</span><br><br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;num_max = %d\n&quot;</span>, num_max);<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-comment">// 函数的定义</span><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">max</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> y)</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">return</span> x &gt; y ? x : y;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>return和exit函数的区别：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//在main函数中调用exit和return结果一样</span><br><span class="hljs-comment">//但在子函数中调用return只是代表子函数终止了，在子函数中调用exit，那么程序终止</span><br></code></pre></td></tr></table></figure></li>
+<li><p>分文件编写函数</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 把函数声明放在头文件xxx.h中，在主函数中包含相应头文件。<br><span class="hljs-bullet">2.</span> 在头文件对应的xxx.c中实现xxx.h声明的函数。<br><span class="hljs-bullet">3.</span> 每个.c文件是单独编译的，所以要有防止头文件多次包含的方法。<br></code></pre></td></tr></table></figure></li>
+<li><p>防止头文件多次包含</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//头文件中不要定义，只声明，定义只在.c文件中定义</span><br><span class="hljs-comment">//因为重复声明没有问题，重复定义则会出现问题</span><br><span class="hljs-comment">//第一种方式，在.h文件中，注意宏的名字不能重复</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">ifndef</span> 宏</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> 宏</span><br><span class="hljs-comment">/*代码*/</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">endif</span></span><br><span class="hljs-comment">//第二种方式，在头文件上方声明如下语句</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">pragma</span> once</span><br></code></pre></td></tr></table></figure></li>
+</ol>
+
             </div>
             <hr>
             <div>

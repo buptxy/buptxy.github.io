@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      0 字
+      279 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1
+      3
        分钟
     </span>
   
@@ -229,7 +229,19 @@
             <h1 style="display: none">运算符与程序结构</h1>
             
             <div class="markdown-body">
-              
+              <h4 id="优先级"><a href="#优先级" class="headerlink" title="优先级"></a>优先级</h4><ol>
+<li>在这里不整理了，最重要的一点就是，不确定就加括号。</li>
+</ol>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><ol>
+<li><p>数据有不同的类型，不同类型数据之间进行混合运算时必然涉及到类型的转换问题。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 转换的方法有两种：<br><span class="hljs-code">	（1）自动转换(隐式转换)：遵循一定的规则,由编译系统自动完成。</span><br><span class="hljs-code">	（2）强制类型转换：把表达式的运算结果强制转换成所需的数据类型。</span><br><span class="hljs-code">2. 类型转换的原则：占用内存字节数少(值域小)的类型，向占用内存字节数多(值域大)的类型转换，以保证精度不降低。</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="%E8%BF%90%E7%AE%97%E7%AC%A6%E4%B8%8E%E7%A8%8B%E5%BA%8F%E7%BB%93%E6%9E%84.assets/clip_image002.jpg" srcset="/img/loading.gif" lazyload alt="2016-06-02_202741"></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//隐式转换的例子</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">int</span> num = <span class="hljs-number">5</span>;<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;s1=%d\n&quot;</span>, num / <span class="hljs-number">2</span>);<br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;s2=%lf\n&quot;</span>, num / <span class="hljs-number">2.0</span>);<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-comment">//强制转换的例子</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span><br><span class="hljs-function"></span>&#123;<br>	<span class="hljs-keyword">float</span> x = <span class="hljs-number">0</span>;<br>	<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>;<br>	x = <span class="hljs-number">3.6f</span>;<br><br>	i = x;			<span class="hljs-comment">//x为实型, i为整型，直接赋值会有警告</span><br>	i = (<span class="hljs-keyword">int</span>)x;		<span class="hljs-comment">//使用强制类型转换</span><br><br>	<span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;x=%f, i=%d\n&quot;</span>, x, i);<br><br>	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure></li>
+</ol>
+
             </div>
             <hr>
             <div>
